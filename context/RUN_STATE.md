@@ -15,7 +15,7 @@ Every required non-physical gate is PASS in `qa/FINAL_STATUS.json`. Physical sen
 - Web journey: `qa/reports/web-journey.json`, PASS with 101 screenshots at 360x800, 390x844, 412x915 and 1440x1000; zero page/console errors and no horizontal overflow.
 - Accessibility: 18 states, zero axe violations; keyboard/focus, reduced-motion, live announcement and chart alternatives are recorded in `qa/reports/ACCESSIBILITY_AUDIT.md`.
 - App suite: 53/53 tests pass. ESP32-C3 hardware and Wokwi builds pass. Portable model runner passes 24 production and 24 S2 vectors plus warm-up/gap checks.
-- GitHub latest demo release: `https://github.com/xjx505/coldloop-coldtrace-edge/releases/tag/v1.0.1-demo`.
+- GitHub Latest is verified as `v1.0.1-demo` (published, not a draft or prerelease); the release tag targets source commit `91373a7`: `https://github.com/xjx505/coldloop-coldtrace-edge/releases/tag/v1.0.1-demo`.
 - Netlify attached-design showcase: `https://coldloop-coldtrace-edge.netlify.app/showcase`; deploy `6ab7a88e10b8d6bdffd93daa`; live route, local bundle hash and exact supplied PNG hash verified in `qa/reports/netlify-deploy-20260926.json`.
 
 ## Integration decisions
