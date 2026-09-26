@@ -1,7 +1,11 @@
 # ColdLoop + ColdTrace Edge
 
+![ColdLoop supplied PNG logo](app/public/coldloop-logo.png)
+
 
 ![Supplied ColdLoop concept artwork](docs/assets/coldloop-brand-art.png)
+
+The exact supplied PNG is preserved at [app/public/coldloop-logo-source.png](app/public/coldloop-logo-source.png); the app header, favicon, Android launcher and splash use PNG assets derived from it.
 
 ColdLoop is an offline-first cold-chain monitoring demo with an ESP32-C3 sensor node, a native Android app, a responsive web app, and deterministic simulation when hardware is unavailable. ColdTrace Edge adds an experimental local thermal-risk model and replay path.
 
@@ -14,7 +18,7 @@ ColdLoop is an offline-first cold-chain monitoring demo with an ESP32-C3 sensor 
 - ai_bundle/coldtrace-android-ai-portable/ — EDGE-3 model, inference source, feature schema, evaluation artifacts, model card, data card and license.
 - qa/ and context/ — evidence reports, journey screenshots, gates, decisions and known limits.
 - wiring/WIRING.md and MORNING_RUNBOOK.md — setup, flashing and demo instructions.
-- docs/assets/coldloop-brand-art.png and app/public/favicon.svg — supplied artwork and app/web mark.
+- docs/assets/coldloop-brand-art.png and app/public/coldloop-logo-source.png — supplied PNG artwork and its app/web mark.
 
 BLE service: 6d6f0001-7c62-4f44-a4d2-0c5a9b2bca01. Telemetry characteristic: 6d6f0002-7c62-4f44-a4d2-0c5a9b2bca01. Packets remain 20-byte little-endian values. Firmware also emits serial JSON at 115200 baud. Demo and replay work offline.
 

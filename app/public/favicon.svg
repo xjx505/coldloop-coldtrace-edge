@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 108 108" role="img" aria-label="ColdLoop">
-  <rect width="108" height="108" rx="22" fill="#F4F2EC"/>
-  <path d="M76 32 C92 46 92 62 76 76 C62 92 46 92 32 76 C18 62 18 46 32 32 C43 21 58 20 69 26" fill="none" stroke="#42685C" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M77 31 66 30 72 23Z" fill="#42685C"/>
-  <path d="M54 39v26" fill="none" stroke="#42685C" stroke-width="5.2" stroke-linecap="round"/>
-  <circle cx="54" cy="65" r="9" fill="#F4F2EC" stroke="#42685C" stroke-width="5.2"/>
-  <path d="M54 47v18" fill="none" stroke="#42685C" stroke-width="5.2" stroke-linecap="round"/>
-</svg>

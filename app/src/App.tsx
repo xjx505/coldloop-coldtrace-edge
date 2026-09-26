@@ -49,9 +49,9 @@ function ProductApp({ controller, embedded = false }: { controller: AppControlle
     <AppHeader className="app-header" role={embedded ? "group" : undefined} aria-label={embedded ? `${state.sourceSession?.profile === "edge3-15byte" ? "ColdTrace Edge" : "ColdLoop"} app header` : undefined} inert={hasOverlay}>
       {state.screen === "settings" ? <>
         <button className="icon-button header-back" onClick={() => controller.back()} aria-label="Back"><Icon name="back" /></button>
-        <div className="header-title"><span className="section-label">PREFERENCES</span><h1>Settings</h1></div>
+        <div className="header-title"><span className="section-label">PREFERENCES</span><div className="header-brand"><img src="/coldloop-logo.png" alt="" aria-hidden="true" /><h1>Settings</h1></div></div>
       </> : <>
-        <div className="header-title"><span className="section-label">{state.sourceSession?.profile === "edge3-15byte" ? "THERMAL FORECAST" : "CONDITION MONITORING"}</span><h1>{state.sourceSession?.profile === "edge3-15byte" ? "ColdTrace Edge" : "ColdLoop"}</h1></div>
+        <div className="header-title"><span className="section-label">{state.sourceSession?.profile === "edge3-15byte" ? "THERMAL FORECAST" : "CONDITION MONITORING"}</span><div className="header-brand"><img src="/coldloop-logo.png" alt="" aria-hidden="true" /><h1>{state.sourceSession?.profile === "edge3-15byte" ? "ColdTrace Edge" : "ColdLoop"}</h1></div></div>
         <div className="header-actions">
           <span className={`header-status ${statusTone(state.connection)}`} role="status"><i aria-hidden="true" />{statusCopy(state.connection, state.replayComplete)}</span>
           <button className="icon-button" onClick={() => controller.navigate("settings")} aria-label="Open settings"><Icon name="settings" /></button>
