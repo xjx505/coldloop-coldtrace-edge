@@ -1,6 +1,5 @@
 # ColdLoop + ColdTrace Edge
 
-![ColdLoop mark](app/public/favicon.svg)
 
 ![Supplied ColdLoop concept artwork](docs/assets/coldloop-brand-art.png)
 
