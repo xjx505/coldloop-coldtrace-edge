@@ -152,3 +152,6 @@ Warning should tolerate noise rather than trigger from a single reading.
 - Tag condition events with the source session and key active rule trackers by session plus event kind so partial history cannot carry across a new source.
 - Air/VOC events record the initial trigger basis and both available peaks. Migrated history without trigger basis is explicitly unknown.
 - Use one accessible dialog with controller-owned exact opener, document-level focus containment, Escape/Back close, and focus restore after inert state clears.
+
+## Public release scope — 2026-09-26
+Published a fresh-history snapshot because the local Git history contains an unrelated raw ChatGPT conversation archive and five third-party source PDFs. The public snapshot omits those materials and the superseded screenshot archive, excludes caches/build outputs/local settings, scrubs workstation paths, and preserves the source index and citations. Model source, model/evaluation artifacts, Apache-2.0 notices, app/firmware source, and current web evidence remain included.
