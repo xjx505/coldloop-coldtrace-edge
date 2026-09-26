@@ -9,7 +9,8 @@ This is the current installable Android debug APK and companion demo assets. The
 - Web/showcase: 101 journey screenshots passed at 360x800, 390x844, 412x915 and 1440x1000, with no page or console errors.
 - Accessibility: 18 audited states, zero axe violations; reduced-motion and chart text alternatives pass.
 - ESP32-C3 hardware and Wokwi firmware builds passed. The portable ColdTrace runner passed 24 production vectors, 24 S2 evaluation vectors, warm-up and gap guards.
-- GitHub and Netlify are listed in `qa/reports/PUBLICATION_STATUS_20260926.md`.
+- Public source: https://github.com/xjx505/coldloop-coldtrace-edge.
+- Live presenter showcase: https://coldloop-coldtrace-edge.netlify.app/showcase.
 
 ## Assets
 

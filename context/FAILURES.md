@@ -288,3 +288,8 @@ GitHub CLI returned Unknown JSON field: isLatest and listed supported fields; th
 Replacement:
 Used gh release list --json isLatest,... and queried GitHub's /releases/latest API endpoint. Both resolved to v1.0.0-demo; gh release view verified uploaded APK and PNG assets.
 Retry allowed? yes, through supported release-list/API surfaces; do not repeat the unsupported field request.
+
+
+## Resolution after the earlier APK QA failure — 2026-09-26
+
+The earlier stale-selector / stale-APK attempt and the 4.7 MB APK hash were superseded by a fresh 6,691,136-byte candidate. That exact candidate then passed install and the 32-screenshot, 51-step Android journey. `qa/FINAL_STATUS.json` now has no NOT_RUN required gates; B8 and B9 remain physical-only. The v1.0.1-demo release is verified Latest and Netlify production is verified live.

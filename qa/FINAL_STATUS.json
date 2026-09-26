@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-26T11:22:47.0169086Z",
+  "generated_at": "2026-09-26T11:31:50.3308336Z",
   "overall": "SOFTWARE_ACCEPTANCE_PASS_PHYSICAL_VALIDATION_REQUIRED",
   "legend": [
     "PASS",
@@ -83,7 +83,7 @@
     },
     "D1_live": {
       "status": "PASS",
-      "evidence": "app/src/screens/ProductScreens.tsx, qa/reports/web-journey.json (84 screenshots) and qa/reports/android-journey.json (24 screenshots) exercise Live status, conditions, trends, warnings and actions."
+      "evidence": "app/src/screens/ProductScreens.tsx, qa/reports/web-journey.json (101 screenshots) and qa/reports/android-journey.json (32 screenshots) exercise Live status, conditions, trends, warnings and actions."
     },
     "D2_metric_detail": {
       "status": "PASS",
@@ -139,7 +139,7 @@
     },
     "F3_apk_artifact": {
       "status": "PASS",
-      "evidence": "Latest GitHub release v1.0.0-demo contains ColdLoop-Android-debug.apk; 6,571,942 bytes; SHA-256 4CA7509A6308C8DC7F75B097B50C1C3AFFA67B1576CAA516973FD9E19B7A0C74. Asset URL: https://github.com/xjx505/coldloop-coldtrace-edge/releases/download/v1.0.0-demo/ColdLoop-Android-debug.apk. GitHub release-list and /releases/latest API both resolve to v1.0.0-demo."
+      "evidence": "GitHub latest v1.0.1-demo is non-draft and non-prerelease. It contains the tested 6,691,136-byte APK; SHA-256 71113663C66F6FFF1F45A7BCAA5B003C4690D4AA26149F6DA9591C4CD8A945E0; GitHub asset digest matches. /releases/latest and release list resolve to v1.0.1-demo."
     },
     "F4_android_emulator": {
       "status": "PASS",
@@ -235,7 +235,7 @@
     },
     "I7_journey_screenshots": {
       "status": "PASS",
-      "evidence": "Connected web/showcase set has 84 screenshots and current Android APK set has 24; qa/reports/VISUAL_AUDIT.md records the reviewed journeys and dispositions."
+      "evidence": "Connected web/showcase set has 101 screenshots and current Android APK set has 24; qa/reports/VISUAL_AUDIT.md records the reviewed journeys and dispositions."
     },
     "I8_visual_audit": {
       "status": "PASS",
@@ -251,7 +251,7 @@
     },
     "I11_screenshots_fresh": {
       "status": "PASS",
-      "evidence": "qa/reports/web-journey.json (84 screenshots) and android-journey.json (24 screenshots) were regenerated after the final duration-display change and explicit desktop warning capture at qa/screenshots/web/1440x1000-showcase/03-showcase-warning.png. The current web screenshot directory matches the 84-frame manifest exactly; 24 superseded frames are preserved outside it in qa/screenshots/archive/superseded-web-20260926/."
+      "evidence": "qa/reports/web-journey.json (101 screenshots) and android-journey.json (32 screenshots) were regenerated after the final duration-display change and explicit desktop warning capture at qa/screenshots/web/1440x1000-showcase/03-showcase-warning.png. The current web screenshot directory matches the 101-frame manifest exactly; 24 superseded frames are preserved outside it in qa/screenshots/archive/superseded-web-20260926/."
     },
     "J1_rendering_sanity": {
       "status": "PASS",
@@ -355,7 +355,7 @@
     "repository": "https://github.com/xjx505/coldloop-coldtrace-edge",
     "latestRelease": "https://github.com/xjx505/coldloop-coldtrace-edge/releases/tag/v1.0.1-demo",
     "latestTag": "v1.0.1-demo",
-    "latestReleaseVerified": false,
+    "latestReleaseVerified": true,
     "apkUrl": "https://github.com/xjx505/coldloop-coldtrace-edge/releases/download/v1.0.1-demo/ColdLoop-Android-debug.apk",
     "apkSha256": "71113663C66F6FFF1F45A7BCAA5B003C4690D4AA26149F6DA9591C4CD8A945E0",
     "logoUrl": "https://github.com/xjx505/coldloop-coldtrace-edge/releases/download/v1.0.1-demo/ColdLoop-User-Logo.png",
@@ -372,6 +372,15 @@
     "unitTests": "53/53 PASS",
     "androidSteps": 51,
     "netlifyBundleMatchesLocal": true,
-    "accessibilityViolations": 0
+    "accessibilityViolations": 0,
+    "releasePublishedAt": "2026-09-26T11:30:16Z",
+    "releaseIsPrerelease": false,
+    "releaseIsLatest": true,
+    "releaseTargetBranch": "main",
+    "logoAssetDigest": "sha256:543af651c1c390d7056fb5b9cda3a14792dd89142925c07aea8cc7a8c1c6afeb",
+    "releaseIsDraft": false,
+    "apkAssetDigest": "sha256:71113663c66f6fff1f45a7bcaa5b003c4690d4aa26149f6da9591c4cd8a945e0",
+    "apkBytes": 6691136,
+    "publicSourceCommit": "91373a7"
   }
 }

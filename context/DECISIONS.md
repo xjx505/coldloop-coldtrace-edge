@@ -1,3 +1,6 @@
+## Current publication outcome — 2026-09-26
+
+The verified release is `v1.0.1-demo`, published as GitHub Latest (not draft/prerelease) with the emulator-tested APK. The live Netlify `/showcase` uses the same current Vite bundle and exact user-supplied PNG. SHA-256 asset fingerprints and URL checks are in `qa/reports/PUBLICATION_STATUS_20260926.md` and `qa/FINAL_STATUS.json`; only physical checks remain.
 ## Current publication decision — 2026-09-26
 
 Publish the current debug APK as the non-prerelease `v1.0.1-demo` latest release, keeping source/evidence in the public `main` branch. Keep the attached product showcase at the existing Netlify site `/showcase`. Use the exact user-supplied PNG as the source mark; keep the original PNG attached and hash-verifiable. Physical sensor/radio claims stay pending until an actual board and handset are exercised.
