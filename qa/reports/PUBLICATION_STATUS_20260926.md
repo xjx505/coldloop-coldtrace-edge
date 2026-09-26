@@ -20,3 +20,10 @@
 - Physical sensor/ESP32 BLE: PHYSICAL_REQUIRED.
 - Manual contrast review for the noted dialog nodes: incomplete.
 - These are reported as incomplete; this publication does not claim all QA gates passed.
+## Publication
+
+Repository: https://github.com/xjx505/coldloop-coldtrace-edge (public, sanitized initial history).
+GitHub release: https://github.com/xjx505/coldloop-coldtrace-edge/releases/tag/v0.1.0-demo (prerelease; APK, hardware/Wokwi firmware, portable model bundle, artwork and app logo attached).
+Netlify production site: https://coldloop-coldtrace-edge.netlify.app (site coldloop-coldtrace-edge, deploy 6ab79a99c11a338945096dfc).
+Deployment check returned HTTP 200 for both / and /showcase.
+

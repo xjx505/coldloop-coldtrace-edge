@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-26T10:09:32Z",
+  "generated_at": "2026-09-26T10:19:47Z",
   "overall": "INCOMPLETE_CURRENT_APK_EMULATOR_AND_PHYSICAL_VALIDATION",
   "legend": [
     "PASS",
@@ -323,5 +323,18 @@
       "qa/reports/COLDTRACE_PHASE1_20260926.md"
     ],
     "remaining_acceptance": "M1-M11 incomplete or not reverified after latest changes; M12 PHYSICAL_REQUIRED"
+  },
+  "publication": {
+    "repository": "https://github.com/xjx505/coldloop-coldtrace-edge",
+    "visibility": "PUBLIC",
+    "release": "https://github.com/xjx505/coldloop-coldtrace-edge/releases/tag/v0.1.0-demo",
+    "release_type": "PRERELEASE",
+    "netlify": "https://coldloop-coldtrace-edge.netlify.app",
+    "netlify_deploy": "6ab79a99c11a338945096dfc",
+    "root_http_status": 200,
+    "showcase_http_status": 200,
+    "apk_sha256": "58B7A34214610B170F2D3E482D1FC5B6042CE53BF28AAA103ECD67115E2FE88E",
+    "hardware_firmware_sha256": "1DD84BF5D001608CA8E7F97C4D1893D8E6D6EB51D466B7FB78F925C1B47D0378",
+    "wokwi_firmware_sha256": "387FC9F8E34ECB45E7A6E0FA21994CCB738A7F3D1ADAED1323A11BEA3D47D83E"
   }
 }

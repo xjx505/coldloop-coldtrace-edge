@@ -1,3 +1,6 @@
+## Publication completed (2026-09-26)
+Public source: https://github.com/xjx505/coldloop-coldtrace-edge. Release: https://github.com/xjx505/coldloop-coldtrace-edge/releases/tag/v0.1.0-demo. Netlify: https://coldloop-coldtrace-edge.netlify.app; root and /showcase returned HTTP 200. Artifact fingerprints and remaining incomplete gates are in qa/reports/PUBLICATION_STATUS_20260926.md. The exact APK emulator journey and physical sensor/BLE checks remain incomplete.
+
 ## Public release checkpoint (2026-09-26)
 The previous final-regression narrative below is historical and is superseded by qa/reports/PUBLICATION_STATUS_20260926.md. Current APK build is recorded there; its final emulator journey was not rerun. Physical ESP32/sensor/BLE checks remain pending.
 

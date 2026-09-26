@@ -89,3 +89,10 @@ State only what was observed: temperature/humidity, sensor readiness, broad rela
 ## 6. Current physical gates
 
 Still to verify on the actual board and phone: board-specific wiring and ADC voltage, sensor readings/readiness, advertising and Android BLE permission, notification sequence updates, and the safe excursion→warning→history→recovery path. No emulator, mock transport or screenshot substitutes for these checks.
+## Published judge links
+
+Web demo: https://coldloop-coldtrace-edge.netlify.app
+Public source and evidence: https://github.com/xjx505/coldloop-coldtrace-edge
+Installable debug APK and firmware assets: https://github.com/xjx505/coldloop-coldtrace-edge/releases/tag/v0.1.0-demo
+The APK in that release was built and hash-verified, but the exact release APK still needs emulator install/navigation/lifecycle validation before claiming final runtime QA. Physical sensor and phone-to-ESP32 BLE checks remain required.
+
