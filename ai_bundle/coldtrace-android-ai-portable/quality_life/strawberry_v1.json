@@ -1,0 +1,28 @@
+{
+  "profile_id": "strawberry-schudel-2022-v1",
+  "commodity": "strawberry",
+  "model_type": "first_order_arrhenius_remaining_quality",
+  "quality_index_initial_percent": 100.0,
+  "quality_index_end_threshold_percent": 20.0,
+  "k0_per_second": 3550000.0,
+  "activation_energy_j_per_mol": 65000.0,
+  "gas_constant_j_per_mol_k": 8.314462618,
+  "reference_temperature_c": 0.0,
+  "literature_calibration_range_c": [0.0, 20.0],
+  "prototype_input_range_c": [-5.0, 30.0],
+  "approximate_constant_temperature_shelf_life_days": {
+    "0": 14.0,
+    "10": 5.0,
+    "20": 2.0
+  },
+  "source": {
+    "title": "Combining experiments and mechanistic modeling to compare ventilated packaging types for strawberries from farm to retailer",
+    "journal": "Food Packaging and Shelf Life",
+    "volume": "34",
+    "article": "100944",
+    "year": 2022,
+    "doi": "10.1016/j.fpsl.2022.100944"
+  },
+  "interpretation": "Literature-calibrated respiration-driven remaining fruit quality model. It is not trained from the ColdTrace six-shipment dataset and is not a food-safety model.",
+  "absolute_rql_requirement": "Absolute remaining quality life requires an externally supplied starting remaining quality life or starting quality state. Without it, only observed-exposure impact is reported."
+}

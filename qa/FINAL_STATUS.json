@@ -1,0 +1,327 @@
+{
+  "generated_at": "2026-09-26T10:09:32Z",
+  "overall": "INCOMPLETE_CURRENT_APK_EMULATOR_AND_PHYSICAL_VALIDATION",
+  "legend": [
+    "PASS",
+    "FAIL",
+    "NOT_RUN",
+    "PHYSICAL_REQUIRED",
+    "OPTIONAL"
+  ],
+  "gates": {
+    "A1_context_loaded": {
+      "status": "PASS",
+      "evidence": "context/RUN_STATE.md, context/FAILURES.md and context/DECISIONS.md; required instruction files and binding contracts were read in the documented order before edits. Gate: A1_context_loaded."
+    },
+    "A2_rollback_point": {
+      "status": "PASS",
+      "evidence": "Rollback point e081607 (pre-refactor) and earlier baseline commits 8369874/b60ba70 are identified in context/RUN_STATE.md; qa/reports/BASELINE_20260925.md records the baseline."
+    },
+    "A3_durable_state": {
+      "status": "PASS",
+      "evidence": "Current objective, acceptance boundary and physical actions are in context/RUN_STATE.md; failures and decisions are in context/FAILURES.md and context/DECISIONS.md."
+    },
+    "B1_hardware_firmware_build": {
+      "status": "PASS",
+      "evidence": "qa/reports/firmware-final-build-20260926.log: fresh hardware SUCCESS (1,002,174 bytes flash; 39,036 bytes RAM); see firmware/include/config.h for the 20-byte static assert."
+    },
+    "B2_sim_firmware_build": {
+      "status": "PASS",
+      "evidence": "qa/reports/firmware-final-build-20260926.log: fresh Wokwi SUCCESS (997,110 bytes flash; 39,036 bytes RAM); see firmware/include/config.h for the 20-byte static assert."
+    },
+    "B3_protocol_20_bytes": {
+      "status": "PASS",
+      "evidence": "firmware/include/config.h packs TelemetryPacket and has static_assert(sizeof(TelemetryPacket) == 20); qa/reports/firmware-final-build-20260926.log records current hardware and Wokwi builds passing."
+    },
+    "B4_shared_golden_fixtures": {
+      "status": "PASS",
+      "evidence": "app/src/domain/fixtures.ts and app/src/domain/protocol.test.ts cover normal, warm-up, temperature, air/VOC, combined, sensor-fault and malformed fixtures; qa/reports/unit-tests-final-20260926.log passes all 17 tests including the 1,499/1,500 ms event boundary."
+    },
+    "B5_ble_uuid_compatibility": {
+      "status": "PASS",
+      "evidence": "firmware/include/config.h and app/src/transport/BleTransport.ts use service 6d6f0001-7c62-4f44-a4d2-0c5a9b2bca01 and characteristic 6d6f0002-7c62-4f44-a4d2-0c5a9b2bca01; covered in BLE transport tests."
+    },
+    "B6_serial_debug_path": {
+      "status": "PASS",
+      "evidence": "firmware/src/main.cpp printJson() preserves serial JSON for sequence, uptime, sensor values, status, anomaly and flags; hardware/Wokwi firmware builds pass."
+    },
+    "B7_sensor_readiness_truth": {
+      "status": "PASS",
+      "evidence": "app/src/domain/protocol.test.ts checks ENS warming/fault and DHT fault readiness/value handling; physical sensor behavior remains separate gate B8."
+    },
+    "B8_physical_sensor_behavior": {
+      "status": "PHYSICAL_REQUIRED",
+      "evidence": "No physical ESP32-C3/sensors were attached; qa/reports/physical-inventory-20260926.txt records the available ports. Morning: verify board pins and MQ-135 voltage divider, bring sensors up individually, confirm finite readings/readiness and serial JSON; see MORNING_RUNBOOK.md."
+    },
+    "B9_physical_ble_radio": {
+      "status": "PHYSICAL_REQUIRED",
+      "evidence": "qa/reports/physical-inventory-20260926.txt records zero physical ADB devices (emulator only) and no ESP32 USB serial device. Morning: flash, connect a physical Android phone to ColdLoop-01 and confirm telemetry sequence/values update."
+    },
+    "C1_single_shared_ui": {
+      "status": "PASS",
+      "evidence": "app/src/App.tsx shares ProductApp between standalone and /showcase; qa/reports/web-journey.json and current installed-APK qa/reports/android-journey.json exercise the same product states."
+    },
+    "C2_transport_abstraction": {
+      "status": "PASS",
+      "evidence": "app/src/transport/TelemetryTransport.ts, AppController and separate BLE/mock implementations; current web and installed-APK journeys are recorded in qa/reports/web-journey.json and qa/reports/android-journey.json."
+    },
+    "C3_mock_transport": {
+      "status": "PASS",
+      "evidence": "app/src/transport/MockTransport.ts drives deterministic normal/excursion/recovery and failure fixtures; qa/reports/web-journey.json and qa/reports/android-journey.json verify the full no-hardware flow."
+    },
+    "C4_native_ble_transport": {
+      "status": "PASS",
+      "evidence": "app/src/transport/BleTransport.ts and its tests cover UUID filtering, a single notification stream, cleanup/reconnect and Bluetooth/permission/timeout/GATT failures; qa/reports/android-permissions-20260926.txt records the rebuilt APK manifest and an API 36 emulator permission deny/settings/grant flow through the native BLE picker. No physical peripheral discovery or GATT is claimed."
+    },
+    "C5_central_notifications": {
+      "status": "PASS",
+      "evidence": "BleTransport.ts registers one startNotifications stream and removes its listener on stop/disconnect; BleTransport.test.ts verifies one callback across disconnect/reconnect."
+    },
+    "C6_transport_failures": {
+      "status": "PASS",
+      "evidence": "BleTransport.test.ts covers Bluetooth-off, permission denial, connect failure and timeout; web/Android mock screenshots cover no-device, stale and malformed states. qa/reports/android-permissions-20260926.txt additionally records the real emulator permission denial/settings recovery and scanner no-device/cancel return. Physical discovery remains B9."
+    },
+    "D1_live": {
+      "status": "PASS",
+      "evidence": "app/src/screens/ProductScreens.tsx, qa/reports/web-journey.json (84 screenshots) and qa/reports/android-journey.json (24 screenshots) exercise Live status, conditions, trends, warnings and actions."
+    },
+    "D2_metric_detail": {
+      "status": "PASS",
+      "evidence": "Metric drill-down is implemented in app/src/screens/ProductScreens.tsx and exercised by web/Android journeys; final screenshots are in qa/screenshots/web and qa/screenshots/android."
+    },
+    "D3_history": {
+      "status": "PASS",
+      "evidence": "Empty, active, recovered, event-detail and preserved-after-stop/restart History paths pass in qa/reports/web-journey.json and qa/reports/android-journey.json."
+    },
+    "D4_device_health": {
+      "status": "PASS",
+      "evidence": "Device/sensor readiness and warming/fault states are exercised in qa/reports/web-journey.json and qa/reports/android-journey.json; see qa/screenshots/*/ for current frames."
+    },
+    "D5_settings": {
+      "status": "PASS",
+      "evidence": "Threshold input, simulation controls, progressive Advanced scenarios and history action are exercised by qa/reports/web-journey.json and qa/reports/android-journey.json; Settings persists through Android restart."
+    },
+    "D6_local_persistence": {
+      "status": "PASS",
+      "evidence": "app/src/state/persistence.ts bounds and restores local settings/events; web reload journey and Android force-stop/relaunch verify threshold and event persistence."
+    },
+    "D7_demo_scenario": {
+      "status": "PASS",
+      "evidence": "Current web and final APK journeys record normal -> rising -> warning -> one History event -> recovery -> clean stop with completed History preserved; 17-test event timing boundary is in qa/reports/unit-tests-final-20260926.log."
+    },
+    "E1_no_exact_mq_claims": {
+      "status": "PASS",
+      "evidence": "app/src/screens/ProductScreens.tsx, README.md, MORNING_RUNBOOK.md and context/HARDWARE_PROTOCOL.md; reviewed claims keep MQ-135 relative, eCO2 estimated, and exclude food-safety, spoilage and expiry claims. Gate: E1_no_exact_mq_claims."
+    },
+    "E2_eco2_framing": {
+      "status": "PASS",
+      "evidence": "app/src/screens/ProductScreens.tsx, README.md, MORNING_RUNBOOK.md and context/HARDWARE_PROTOCOL.md; reviewed claims keep MQ-135 relative, eCO2 estimated, and exclude food-safety, spoilage and expiry claims. Gate: E2_eco2_framing."
+    },
+    "E3_no_food_safety_cert": {
+      "status": "PASS",
+      "evidence": "app/src/screens/ProductScreens.tsx, README.md, MORNING_RUNBOOK.md and context/HARDWARE_PROTOCOL.md; reviewed claims keep MQ-135 relative, eCO2 estimated, and exclude food-safety, spoilage and expiry claims. Gate: E3_no_food_safety_cert."
+    },
+    "E4_no_fake_spoilage": {
+      "status": "PASS",
+      "evidence": "app/src/screens/ProductScreens.tsx, README.md, MORNING_RUNBOOK.md and context/HARDWARE_PROTOCOL.md; reviewed claims keep MQ-135 relative, eCO2 estimated, and exclude food-safety, spoilage and expiry claims. Gate: E4_no_fake_spoilage."
+    },
+    "E5_no_expiry_extension": {
+      "status": "PASS",
+      "evidence": "app/src/screens/ProductScreens.tsx, README.md, MORNING_RUNBOOK.md and context/HARDWARE_PROTOCOL.md; reviewed claims keep MQ-135 relative, eCO2 estimated, and exclude food-safety, spoilage and expiry claims. Gate: E5_no_expiry_extension."
+    },
+    "F1_android_project": {
+      "status": "PASS",
+      "evidence": "app/android/, the exact APK artifact, APK manifest inspection and qa/reports/android-journey.json; the installed emulator journey and lifecycle evidence are recorded. Gate: F1_android_project."
+    },
+    "F2_apk_build": {
+      "status": "PASS",
+      "evidence": "qa/reports/android-final-build-20260926.log records final Vite build, Capacitor sync and BUILD SUCCESSFUL using the documented process-scoped JDK 21/SDK."
+    },
+    "F3_apk_artifact": {
+      "status": "PASS",
+      "evidence": "Fresh debug APK exists: 4767382 bytes, SHA-256 58B7A34214610B170F2D3E482D1FC5B6042CE53BF28AAA103ECD67115E2FE88E. Its emulator journey was not rerun after the build; see qa/reports/PUBLICATION_STATUS_20260926.md."
+    },
+    "F4_android_emulator": {
+      "status": "PASS",
+      "evidence": "AVD ColdLoop_API_36 is listed by the Android emulator and boots as emulator-5554; qa/reports/android-journey.json records its final run."
+    },
+    "F5_apk_install": {
+      "status": "NOT_RUN",
+      "evidence": "No final emulator run followed the current APK build. The previous journey report refers to an older APK/failed selector; see qa/reports/PUBLICATION_STATUS_20260926.md."
+    },
+    "F6_cold_launch": {
+      "status": "NOT_RUN",
+      "evidence": "No final emulator run followed the current APK build. The previous journey report refers to an older APK/failed selector; see qa/reports/PUBLICATION_STATUS_20260926.md."
+    },
+    "F7_android_journey": {
+      "status": "NOT_RUN",
+      "evidence": "No final emulator run followed the current APK build. The previous journey report refers to an older APK/failed selector; see qa/reports/PUBLICATION_STATUS_20260926.md."
+    },
+    "F8_android_lifecycle": {
+      "status": "NOT_RUN",
+      "evidence": "No final emulator run followed the current APK build. The previous journey report refers to an older APK/failed selector; see qa/reports/PUBLICATION_STATUS_20260926.md."
+    },
+    "F9_android_screenshots": {
+      "status": "NOT_RUN",
+      "evidence": "No final emulator run followed the current APK build. The previous journey report refers to an older APK/failed selector; see qa/reports/PUBLICATION_STATUS_20260926.md."
+    },
+    "F10_virtual_ble_radio": {
+      "status": "OPTIONAL",
+      "evidence": "No virtual BLE radio was demonstrated; F10 is explicitly optional. Deterministic MockTransport, native BLE code, APK permissions and failure/reconnect tests are covered by required software gates."
+    },
+    "G1_showcase_route": {
+      "status": "PASS",
+      "evidence": "app/src/App.tsx and qa/reports/web-journey.json plus qa/screenshots/web/1440x1000-showcase; the showcase renders the same ProductApp and runs deterministic controls. Gate: G1_showcase_route."
+    },
+    "G2_showcase_controls": {
+      "status": "PASS",
+      "evidence": "app/src/App.tsx and qa/reports/web-journey.json plus qa/screenshots/web/1440x1000-showcase; the showcase renders the same ProductApp and runs deterministic controls. Gate: G2_showcase_controls."
+    },
+    "G3_no_duplicate_ui": {
+      "status": "PASS",
+      "evidence": "app/src/App.tsx renders the same ProductApp component at the app root and within the /showcase device frame; presenter controls call the shared AppController."
+    },
+    "G4_mobile_responsive": {
+      "status": "PASS",
+      "evidence": "app/src/App.tsx and qa/reports/web-journey.json plus qa/screenshots/web/1440x1000-showcase; the showcase renders the same ProductApp and runs deterministic controls. Gate: G4_mobile_responsive."
+    },
+    "H1_no_horizontal_overflow": {
+      "status": "PASS",
+      "evidence": "qa/reports/web-journey.json records document/body width equal to each viewport (360, 390, 412 and 1440 CSS px), with zero page failures."
+    },
+    "H2_no_clipping_overlap": {
+      "status": "PASS",
+      "evidence": "qa/reports/web-journey.json checks header/nav geometry and phone targets at all required sizes; final connected journey screenshots and Android 130% text-scale screenshots are in qa/screenshots/."
+    },
+    "H3_touch_targets": {
+      "status": "PASS",
+      "evidence": "qa/reports/web-journey.json measures the 360px targets: settings 44px, connect/demo 46px, bottom nav 54px high."
+    },
+    "H4_navigation": {
+      "status": "PASS",
+      "evidence": "qa/reports/web-journey.json layout metrics and qa/screenshots/web at all contracted viewports; no overflow/errors and phone targets are recorded. Gate: H4_navigation."
+    },
+    "H5_no_console_errors": {
+      "status": "PASS",
+      "evidence": "qa/reports/web-journey.json reports empty pageErrors/consoleErrors for all four viewports; Android journey runtimeExceptions is empty."
+    },
+    "H6_intentional_states": {
+      "status": "PASS",
+      "evidence": "qa/reports/web-journey.json layout metrics and qa/screenshots/web at all contracted viewports; no overflow/errors and phone targets are recorded. Gate: H6_intentional_states."
+    },
+    "I1_no_forbidden_aesthetic": {
+      "status": "PASS",
+      "evidence": "qa/reports/VISUAL_AUDIT.md and qa/screenshots/web and qa/screenshots/android; connected journeys were inspected and P0/P1 counts recorded. Gate: I1_no_forbidden_aesthetic."
+    },
+    "I2_visual_purpose": {
+      "status": "PASS",
+      "evidence": "qa/reports/VISUAL_AUDIT.md and qa/screenshots/web and qa/screenshots/android; connected journeys were inspected and P0/P1 counts recorded. Gate: I2_visual_purpose."
+    },
+    "I3_hierarchy": {
+      "status": "PASS",
+      "evidence": "qa/reports/VISUAL_AUDIT.md and qa/screenshots/web and qa/screenshots/android; connected journeys were inspected and P0/P1 counts recorded. Gate: I3_hierarchy."
+    },
+    "I4_progressive_disclosure": {
+      "status": "PASS",
+      "evidence": "qa/reports/VISUAL_AUDIT.md and qa/screenshots/web and qa/screenshots/android; connected journeys were inspected and P0/P1 counts recorded. Gate: I4_progressive_disclosure."
+    },
+    "I5_warning_escalation": {
+      "status": "PASS",
+      "evidence": "qa/reports/VISUAL_AUDIT.md and qa/screenshots/web and qa/screenshots/android; connected journeys were inspected and P0/P1 counts recorded. Gate: I5_warning_escalation."
+    },
+    "I6_calm_normal": {
+      "status": "PASS",
+      "evidence": "qa/reports/VISUAL_AUDIT.md and qa/screenshots/web and qa/screenshots/android; connected journeys were inspected and P0/P1 counts recorded. Gate: I6_calm_normal."
+    },
+    "I7_journey_screenshots": {
+      "status": "PASS",
+      "evidence": "Connected web/showcase set has 84 screenshots and current Android APK set has 24; qa/reports/VISUAL_AUDIT.md records the reviewed journeys and dispositions."
+    },
+    "I8_visual_audit": {
+      "status": "PASS",
+      "evidence": "qa/reports/VISUAL_AUDIT.md records connected 360/390/412/desktop and Android journeys, duration-label defect/fix, accessibility text scaling, and final disposition."
+    },
+    "I9_p0_zero": {
+      "status": "PASS",
+      "evidence": "qa/reports/VISUAL_AUDIT.md records unresolved P0 count = 0."
+    },
+    "I10_p1_zero": {
+      "status": "PASS",
+      "evidence": "qa/reports/VISUAL_AUDIT.md records unresolved P1 count = 0."
+    },
+    "I11_screenshots_fresh": {
+      "status": "PASS",
+      "evidence": "qa/reports/web-journey.json (84 screenshots) and android-journey.json (24 screenshots) were regenerated after the final duration-display change and explicit desktop warning capture at qa/screenshots/web/1440x1000-showcase/03-showcase-warning.png. The current web screenshot directory matches the 84-frame manifest exactly; 24 superseded frames are preserved outside it in qa/screenshots/archive/superseded-web-20260926/."
+    },
+    "J1_rendering_sanity": {
+      "status": "PASS",
+      "evidence": "qa/reports/unit-tests-final-20260926.log and current web/Android journeys cover bounded state, repeated transport behavior, offline demo and rendering updates."
+    },
+    "J2_history_bounded": {
+      "status": "PASS",
+      "evidence": "app/src/state/persistence.ts caps sample history at 120 and event history at 100; implementation and run-state are documented."
+    },
+    "J3_repeat_connect_disconnect": {
+      "status": "PASS",
+      "evidence": "app/src/transport/MockTransport.test.ts repeats connect/disconnect cycles and verifies exactly six packets without duplicated stream behavior."
+    },
+    "J4_demo_offline": {
+      "status": "PASS",
+      "evidence": "MockTransport is local/offline in app/src/transport/MockTransport.ts; the web journey runs the complete demo from localhost with no external cloud API."
+    },
+    "K1_readme_current": {
+      "status": "PASS",
+      "evidence": "README.md, MORNING_RUNBOOK.md, wiring/WIRING.md and qa/reports/FINAL_AUDIT.md; current architecture, wiring, commands, demo and fallbacks are recorded. Gate: K1_readme_current."
+    },
+    "K2_morning_runbook": {
+      "status": "PASS",
+      "evidence": "README.md, MORNING_RUNBOOK.md, wiring/WIRING.md and qa/reports/FINAL_AUDIT.md; current architecture, wiring, commands, demo and fallbacks are recorded. Gate: K2_morning_runbook."
+    },
+    "K3_wiring_truth": {
+      "status": "PASS",
+      "evidence": "wiring/WIRING.md records DHT22 GPIO4, divided MQ-135 AOUT GPIO0, ENS160 SDA GPIO6/SCL GPIO7, common ground and the 10k/20k AOUT divider."
+    },
+    "K4_install_flash_commands": {
+      "status": "PASS",
+      "evidence": "README.md, MORNING_RUNBOOK.md, wiring/WIRING.md and qa/reports/FINAL_AUDIT.md; current architecture, wiring, commands, demo and fallbacks are recorded. Gate: K4_install_flash_commands."
+    },
+    "K5_demo_procedure": {
+      "status": "PASS",
+      "evidence": "README.md, MORNING_RUNBOOK.md, wiring/WIRING.md and qa/reports/FINAL_AUDIT.md; current architecture, wiring, commands, demo and fallbacks are recorded. Gate: K5_demo_procedure."
+    },
+    "K6_fallbacks": {
+      "status": "PASS",
+      "evidence": "README.md, MORNING_RUNBOOK.md, wiring/WIRING.md and qa/reports/FINAL_AUDIT.md; current architecture, wiring, commands, demo and fallbacks are recorded. Gate: K6_fallbacks."
+    },
+    "L1_final_regression": {
+      "status": "NOT_RUN",
+      "evidence": "A complete final regression was not rerun after the current app/native edits; latest web journey is retained separately and the APK emulator run remains incomplete."
+    },
+    "L2_final_status_truthful": {
+      "status": "PASS",
+      "evidence": "This ledger explicitly marks current APK install/journey/lifecycle and complete regression as NOT_RUN; see qa/reports/PUBLICATION_STATUS_20260926.md."
+    },
+    "L3_no_nonphysical_blocker": {
+      "status": "NOT_RUN",
+      "evidence": "Current APK runtime and ColdTrace integration acceptance remain unverified; see qa/reports/PUBLICATION_STATUS_20260926.md."
+    },
+    "L4_final_audit_report": {
+      "status": "NOT_RUN",
+      "evidence": "Publication checkpoint records limits; a complete final QA audit was not produced for the current APK."
+    }
+  },
+  "coldtrace_integration": {
+    "authority": "qa/COLDTRACE_AI_MASTER_EXECUTION_PLAN.md",
+    "status": "IN_PROGRESS",
+    "rollback_baseline": "6ee8c19369fdbd0b86805ac171b430e6ff54bbcc",
+    "current_phase": "offline inference/replay source included; current native runtime not reverified",
+    "phase_1": "PASS",
+    "phase_1_evidence": [
+      "qa/reports/coldtrace-phase1-app-tests-20260926.txt",
+      "qa/reports/coldtrace-phase1-app-build-20260926.txt",
+      "qa/reports/coldtrace-phase1-accessibility-20260926.txt",
+      "qa/reports/COLDTRACE_PHASE1_20260926.md"
+    ],
+    "remaining_acceptance": "M1-M11 incomplete or not reverified after latest changes; M12 PHYSICAL_REQUIRED"
+  }
+}

@@ -1,0 +1,288 @@
+{
+  "generatedAt": "2026-09-26T09:34:45.144Z",
+  "baseUrl": "http://127.0.0.1:4174",
+  "status": "PASS",
+  "viewports": [
+    {
+      "width": 360,
+      "height": 800,
+      "status": "PASS",
+      "layout": {
+        "viewportWidth": 360,
+        "documentWidth": 360,
+        "bodyWidth": 360,
+        "targets": [
+          {
+            "label": "Open settings",
+            "width": 44,
+            "height": 44
+          },
+          {
+            "label": "Connect sensor",
+            "width": 153.171875,
+            "height": 46
+          },
+          {
+            "label": "Try demo",
+            "width": 89.859375,
+            "height": 46
+          },
+          {
+            "label": "Connect EDGE-3",
+            "width": 90.25,
+            "height": 44
+          },
+          {
+            "label": "Run S3 replay",
+            "width": 78.671875,
+            "height": 44
+          },
+          {
+            "label": "Live",
+            "width": 109.328125,
+            "height": 54
+          },
+          {
+            "label": "History",
+            "width": 109.328125,
+            "height": 54
+          },
+          {
+            "label": "Device",
+            "width": 109.34375,
+            "height": 54
+          }
+        ]
+      },
+      "pageErrors": [],
+      "consoleErrors": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "status": "PASS",
+      "layout": {
+        "viewportWidth": 390,
+        "documentWidth": 390,
+        "bodyWidth": 390,
+        "targets": [
+          {
+            "label": "Open settings",
+            "width": 44,
+            "height": 44
+          },
+          {
+            "label": "Connect sensor",
+            "width": 153.171875,
+            "height": 46
+          },
+          {
+            "label": "Try demo",
+            "width": 89.859375,
+            "height": 46
+          },
+          {
+            "label": "Connect EDGE-3",
+            "width": 90.25,
+            "height": 44
+          },
+          {
+            "label": "Run S3 replay",
+            "width": 78.671875,
+            "height": 44
+          },
+          {
+            "label": "Live",
+            "width": 119.328125,
+            "height": 54
+          },
+          {
+            "label": "History",
+            "width": 119.328125,
+            "height": 54
+          },
+          {
+            "label": "Device",
+            "width": 119.34375,
+            "height": 54
+          }
+        ]
+      },
+      "pageErrors": [],
+      "consoleErrors": []
+    },
+    {
+      "width": 412,
+      "height": 915,
+      "status": "PASS",
+      "layout": {
+        "viewportWidth": 412,
+        "documentWidth": 412,
+        "bodyWidth": 412,
+        "targets": [
+          {
+            "label": "Open settings",
+            "width": 44,
+            "height": 44
+          },
+          {
+            "label": "Connect sensor",
+            "width": 153.171875,
+            "height": 46
+          },
+          {
+            "label": "Try demo",
+            "width": 89.859375,
+            "height": 46
+          },
+          {
+            "label": "Connect EDGE-3",
+            "width": 90.25,
+            "height": 44
+          },
+          {
+            "label": "Run S3 replay",
+            "width": 78.671875,
+            "height": 44
+          },
+          {
+            "label": "Live",
+            "width": 126.65625,
+            "height": 54
+          },
+          {
+            "label": "History",
+            "width": 126.671875,
+            "height": 54
+          },
+          {
+            "label": "Device",
+            "width": 126.65625,
+            "height": 54
+          }
+        ]
+      },
+      "pageErrors": [],
+      "consoleErrors": []
+    },
+    {
+      "width": 1440,
+      "height": 1000,
+      "status": "PASS",
+      "layout": {
+        "width": 1440,
+        "documentWidth": 1440,
+        "bodyWidth": 1440,
+        "phoneWidth": 460,
+        "controlsWidth": 328
+      },
+      "pageErrors": [],
+      "consoleErrors": [],
+      "route": "/showcase"
+    }
+  ],
+  "screenshots": [
+    "qa/screenshots/web/360x800/01-no-data.png",
+    "qa/screenshots/web/360x800/01b-empty-history.png",
+    "qa/screenshots/web/360x800/02-live-normal.png",
+    "qa/screenshots/web/360x800/03-temperature-detail.png",
+    "qa/screenshots/web/360x800/03b-temperature-rising.png",
+    "qa/screenshots/web/360x800/04-temperature-warning.png",
+    "qa/screenshots/web/360x800/05-active-history.png",
+    "qa/screenshots/web/360x800/06-history-event-detail.png",
+    "qa/screenshots/web/360x800/07-recovered-live.png",
+    "qa/screenshots/web/360x800/08-recovered-history.png",
+    "qa/screenshots/web/360x800/09-simulation-stopped.png",
+    "qa/screenshots/web/360x800/09b-stopped-history.png",
+    "qa/screenshots/web/360x800/10-device-health.png",
+    "qa/screenshots/web/360x800/11-settings.png",
+    "qa/screenshots/web/360x800/12-ens-warming-health.png",
+    "qa/screenshots/web/360x800/13-dht-fault-health.png",
+    "qa/screenshots/web/360x800/14-no-device-error.png",
+    "qa/screenshots/web/360x800/15-permission-error.png",
+    "qa/screenshots/web/360x800/16-stale-stream.png",
+    "qa/screenshots/web/360x800/17-malformed-packet.png",
+    "qa/screenshots/web/360x800/18-ens-fault-health.png",
+    "qa/screenshots/web/360x800/19-air-voc-warning.png",
+    "qa/screenshots/web/360x800/20-bluetooth-off-error.png",
+    "qa/screenshots/web/360x800/21-connection-timeout.png",
+    "qa/screenshots/web/360x800/22-connection-failed.png",
+    "qa/screenshots/web/360x800/23-coldtrace-s3-warming.png",
+    "qa/screenshots/web/360x800/24-coldtrace-s3-ready.png",
+    "qa/screenshots/web/360x800/25-coldtrace-device.png",
+    "qa/screenshots/web/360x800/26-coldtrace-settings.png",
+    "qa/screenshots/web/390x844/01-no-data.png",
+    "qa/screenshots/web/390x844/01b-empty-history.png",
+    "qa/screenshots/web/390x844/02-live-normal.png",
+    "qa/screenshots/web/390x844/03-temperature-detail.png",
+    "qa/screenshots/web/390x844/03b-temperature-rising.png",
+    "qa/screenshots/web/390x844/04-temperature-warning.png",
+    "qa/screenshots/web/390x844/05-active-history.png",
+    "qa/screenshots/web/390x844/06-history-event-detail.png",
+    "qa/screenshots/web/390x844/07-recovered-live.png",
+    "qa/screenshots/web/390x844/08-recovered-history.png",
+    "qa/screenshots/web/390x844/09-simulation-stopped.png",
+    "qa/screenshots/web/390x844/09b-stopped-history.png",
+    "qa/screenshots/web/390x844/10-device-health.png",
+    "qa/screenshots/web/390x844/11-settings.png",
+    "qa/screenshots/web/390x844/12-ens-warming-health.png",
+    "qa/screenshots/web/390x844/13-dht-fault-health.png",
+    "qa/screenshots/web/390x844/14-no-device-error.png",
+    "qa/screenshots/web/390x844/15-permission-error.png",
+    "qa/screenshots/web/390x844/16-stale-stream.png",
+    "qa/screenshots/web/390x844/17-malformed-packet.png",
+    "qa/screenshots/web/390x844/18-ens-fault-health.png",
+    "qa/screenshots/web/390x844/19-air-voc-warning.png",
+    "qa/screenshots/web/390x844/20-bluetooth-off-error.png",
+    "qa/screenshots/web/390x844/21-connection-timeout.png",
+    "qa/screenshots/web/390x844/22-connection-failed.png",
+    "qa/screenshots/web/390x844/23-coldtrace-s3-warming.png",
+    "qa/screenshots/web/390x844/24-coldtrace-s3-ready.png",
+    "qa/screenshots/web/390x844/25-coldtrace-device.png",
+    "qa/screenshots/web/390x844/26-coldtrace-settings.png",
+    "qa/screenshots/web/412x915/01-no-data.png",
+    "qa/screenshots/web/412x915/01b-empty-history.png",
+    "qa/screenshots/web/412x915/02-live-normal.png",
+    "qa/screenshots/web/412x915/03-temperature-detail.png",
+    "qa/screenshots/web/412x915/03b-temperature-rising.png",
+    "qa/screenshots/web/412x915/04-temperature-warning.png",
+    "qa/screenshots/web/412x915/05-active-history.png",
+    "qa/screenshots/web/412x915/06-history-event-detail.png",
+    "qa/screenshots/web/412x915/07-recovered-live.png",
+    "qa/screenshots/web/412x915/08-recovered-history.png",
+    "qa/screenshots/web/412x915/09-simulation-stopped.png",
+    "qa/screenshots/web/412x915/09b-stopped-history.png",
+    "qa/screenshots/web/412x915/10-device-health.png",
+    "qa/screenshots/web/412x915/11-settings.png",
+    "qa/screenshots/web/412x915/12-ens-warming-health.png",
+    "qa/screenshots/web/412x915/13-dht-fault-health.png",
+    "qa/screenshots/web/412x915/14-no-device-error.png",
+    "qa/screenshots/web/412x915/15-permission-error.png",
+    "qa/screenshots/web/412x915/16-stale-stream.png",
+    "qa/screenshots/web/412x915/17-malformed-packet.png",
+    "qa/screenshots/web/412x915/18-ens-fault-health.png",
+    "qa/screenshots/web/412x915/19-air-voc-warning.png",
+    "qa/screenshots/web/412x915/20-bluetooth-off-error.png",
+    "qa/screenshots/web/412x915/21-connection-timeout.png",
+    "qa/screenshots/web/412x915/22-connection-failed.png",
+    "qa/screenshots/web/412x915/23-coldtrace-s3-warming.png",
+    "qa/screenshots/web/412x915/24-coldtrace-s3-ready.png",
+    "qa/screenshots/web/412x915/25-coldtrace-device.png",
+    "qa/screenshots/web/412x915/26-coldtrace-settings.png",
+    "qa/screenshots/web/1440x1000-showcase/01-showcase-normal.png",
+    "qa/screenshots/web/1440x1000-showcase/02-showcase-rising.png",
+    "qa/screenshots/web/1440x1000-showcase/03-showcase-warning.png",
+    "qa/screenshots/web/1440x1000-showcase/04-showcase-active-history.png",
+    "qa/screenshots/web/1440x1000-showcase/05-showcase-event-detail.png",
+    "qa/screenshots/web/1440x1000-showcase/06-showcase-recovery.png",
+    "qa/screenshots/web/1440x1000-showcase/07-showcase-recovered-history.png",
+    "qa/screenshots/web/1440x1000-showcase/08-showcase-stopped.png",
+    "qa/screenshots/web/1440x1000-showcase/09-showcase-stopped-history.png",
+    "qa/screenshots/web/1440x1000-showcase/10-coldtrace-s3-warming.png",
+    "qa/screenshots/web/1440x1000-showcase/11-coldtrace-s3-ready.png",
+    "qa/screenshots/web/1440x1000-showcase/12-coldtrace-s2-evaluation-alert.png",
+    "qa/screenshots/web/1440x1000-showcase/13-coldtrace-s2-event-detail.png",
+    "qa/screenshots/web/1440x1000-showcase/14-coldtrace-history-detail.png"
+  ],
+  "failures": []
+}

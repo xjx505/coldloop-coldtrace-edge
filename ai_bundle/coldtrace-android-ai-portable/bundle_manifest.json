@@ -1,0 +1,51 @@
+{
+  "bundle_id": "coldtrace-android-ai-portable",
+  "bundle_version": "1.0.0",
+  "created_on": "2026-09-26",
+  "project": "ColdLoop / ColdTrace",
+  "model": {
+    "model_version": "coldtrace-edge3-logistic-v1",
+    "artifact": "model/edge_model.json",
+    "family": "regularized class-weighted Logistic Regression",
+    "sensor_configuration": "EDGE-3",
+    "input_window_samples": 7,
+    "input_window_minutes": 60,
+    "source_cadence_minutes": 10,
+    "target": "y_next_120_R2",
+    "decision_threshold": 0.5,
+    "training_rows": 2510,
+    "training_shipments": ["S1", "S2", "S3", "S4", "S5", "S6"],
+    "calibrated": false,
+    "inference_runtime": "JavaScript ES modules; no network/GPU required"
+  },
+  "modules": {
+    "production_inference": [
+      "src/features.js",
+      "src/model.js",
+      "src/controller.js",
+      "src/index.js"
+    ],
+    "optional_prototype_calibration": "calibration/edge_calibration.json",
+    "evaluation_only_s2_model": "evaluation_only/edge_model_s2_loso.json",
+    "optional_literature_quality_model": "quality_life/quality_life.js"
+  },
+  "evaluation_only": {
+    "model_version": "coldtrace-edge3-logistic-s2-loso-v1",
+    "heldout_shipment": "S2",
+    "training_shipments": ["S1", "S3", "S4", "S5", "S6"],
+    "deployment_use": false
+  },
+  "source_data": {
+    "name": "NifferLi/Cold-Chain-Transportation-Strawberry",
+    "revision": "4f9541d8a20616b3c5fedc7d9fd27a8a0b6701dc",
+    "processed_rows": 14398,
+    "independent_shipments": 6,
+    "declared_license": "Apache-2.0",
+    "description_preprint": "Abdella, Brecht & Uysal, A Time-Temperature Dataset for the Strawberry Cold Chain Across Multiple Shipments and Locations, arXiv:2103.12895",
+    "related_journal_article": "Abdella, Brecht & Uysal, Statistical and temporal analysis of a novel multivariate time series data for food engineering, Journal of Food Engineering 298 (2021), 110477, DOI 10.1016/j.jfoodeng.2021.110477"
+  },
+  "integrity": {
+    "checksums_file": "SHA256SUMS.txt",
+    "production_model_canonical_sha256": "c38820884f360f077afa2a21e84c2111e2266e45f42b3a2f45861b5a307aa722"
+  }
+}

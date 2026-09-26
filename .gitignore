@@ -1,0 +1,32 @@
+.venv/
+**/.pio/
+node_modules/
+.DS_Store
+*.log
+
+# Web/Node output
+app/dist/
+app/.vite/
+coverage/
+playwright-report/
+test-results/
+
+# Android/Gradle generated output
+**/.gradle/
+**/build/
+app/android/.idea/
+app/android/local.properties
+
+# Local tools / downloaded SDKs if placed in repo accidentally
+.android-sdk/
+.jdk/
+
+# OS/editor
+Thumbs.db
+.vscode/
+
+# Python cache and sanitized publication staging
+__pycache__/
+*.py[cod]
+public-snapshot/
+

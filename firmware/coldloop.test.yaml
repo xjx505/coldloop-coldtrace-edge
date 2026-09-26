@@ -1,0 +1,20 @@
+name: ColdLoop end-to-end sensor scenario
+version: 1
+author: ColdLoop
+steps:
+  - wait-serial: 'ColdLoop booting'
+  - wait-serial: '"temp":4.50'
+  - set-control:
+      part-id: dht
+      control: temperature
+      value: 12
+  - set-control:
+      part-id: dht
+      control: humidity
+      value: 68
+  - set-control:
+      part-id: gas
+      control: ppm
+      value: 2500
+  - delay: 3s
+  - wait-serial: '"temp":12.00'

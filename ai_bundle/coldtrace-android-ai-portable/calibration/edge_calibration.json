@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "model_family": "EDGE-3 regularized logistic",
+  "method": "Platt scaling on clipped raw-score logit",
+  "calibration_status": "PROTOTYPE_SECONDARY_ESTIMATE",
+  "alert_behavior_changed": false,
+  "nested_evaluation": [
+    {
+      "held_out_shipment": "S1",
+      "n": 556,
+      "positives": 12,
+      "raw_brier": 0.3200182621872726,
+      "calibrated_brier": 0.02964940563683666,
+      "raw_log_loss": 0.8674573208355648,
+      "calibrated_log_loss": 0.16252943364184158,
+      "platt": {
+        "a": 0.3442872321160279,
+        "b": -2.226542934188625
+      }
+    },
+    {
+      "held_out_shipment": "S2",
+      "n": 188,
+      "positives": 32,
+      "raw_brier": 0.12868210051005718,
+      "calibrated_brier": 0.14621706249144037,
+      "raw_log_loss": 0.4580022065724305,
+      "calibrated_log_loss": 0.47844140647366623,
+      "platt": {
+        "a": 0.1073906337237976,
+        "b": -2.523207134282715
+      }
+    },
+    {
+      "held_out_shipment": "S3",
+      "n": 582,
+      "positives": 78,
+      "raw_brier": 0.27361191953703734,
+      "calibrated_brier": 0.12040040483376767,
+      "raw_log_loss": 0.7661856085738169,
+      "calibrated_log_loss": 0.4218737445029928,
+      "platt": {
+        "a": 0.1649111561964053,
+        "b": -2.5592576212223617
+      }
+    },
+    {
+      "held_out_shipment": "S4",
+      "n": 411,
+      "positives": 24,
+      "raw_brier": 0.06084427282736384,
+      "calibrated_brier": 0.05372886989906348,
+      "raw_log_loss": 0.2506164934698823,
+      "calibrated_log_loss": 0.20717747514421317,
+      "platt": {
+        "a": 0.596166230763535,
+        "b": -2.269370977827332
+      }
+    },
+    {
+      "held_out_shipment": "S5",
+      "n": 509,
+      "positives": 28,
+      "raw_brier": 0.20637940575524114,
+      "calibrated_brier": 0.04963561632059517,
+      "raw_log_loss": 0.6016311369154067,
+      "calibrated_log_loss": 0.20332909945046104,
+      "platt": {
+        "a": 0.26618887505862754,
+        "b": -2.3036082014158326
+      }
+    },
+    {
+      "held_out_shipment": "S6",
+      "n": 264,
+      "positives": 28,
+      "raw_brier": 0.18294490598917126,
+      "calibrated_brier": 0.09548053323633067,
+      "raw_log_loss": 0.5503165473941721,
+      "calibrated_log_loss": 0.3425003782718375,
+      "platt": {
+        "a": 0.0735111702371551,
+        "b": -2.4302098409078274
+      }
+    }
+  ],
+  "summary": {
+    "mean_raw_brier": 0.1954134778010239,
+    "mean_calibrated_brier": 0.082518648736339,
+    "median_raw_brier": 0.1946621558722062,
+    "median_calibrated_brier": 0.07460470156769708,
+    "mean_raw_log_loss": 0.5823682189602123,
+    "mean_calibrated_log_loss": 0.30264192291416875,
+    "brier_folds_improved": 5,
+    "log_loss_folds_improved": 5
+  },
+  "deployment_calibrator": {
+    "a": 0.4376398714892865,
+    "b": -2.3532351598694974,
+    "fit_source": "six-shipment LOSO out-of-fold raw scores"
+  },
+  "s2_replay_calibrator": {
+    "a": 0.1073906337237976,
+    "b": -2.523207134282715,
+    "fit_source": "inner LOSO predictions using S1,S3,S4,S5,S6 only; S2 untouched"
+  },
+  "interpretation": "Secondary prototype estimate of the y_next_120_R2 target frequency. It is not a spoilage, shelf-life, or food-safety probability. The raw 0.5 alert threshold is unchanged."
+}

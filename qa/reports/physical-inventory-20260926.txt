@@ -1,0 +1,13 @@
+Physical-device availability check (2026-09-26)
+PlatformIO device list (descriptions only):
+COM9 - Standard Serial over Bluetooth link (COM9)
+COM11 - Standard Serial over Bluetooth link (COM11)
+COM5 - Standard Serial over Bluetooth link (COM5)
+COM1 - Communications Port (COM1)
+COM10 - Standard Serial over Bluetooth link (COM10)
+COM12 - Standard Serial over Bluetooth link (COM12)
+COM4 - Standard Serial over Bluetooth link (COM4)
+ADB devices:
+List of devices attached
+emulator-5554          device product:sdk_gphone64_x86_64 model:sdk_gphone64_x86_64 device:emu64xa transport_id:10
+Physical Android devices attached: 0

@@ -1,0 +1,19 @@
+Reboot The Earth CMU FAQs 2026 — presentation/judging extract
+
+Official FAQ states:
+
+- After the four-day hackathon development period (September 23–26, 2026), teams participate in science fair-style judging.
+- Judges select five finalist teams to present their solutions in the final round.
+- An expert judging panel selects the overall winner.
+- Four additional awards recognize environmental impact, technical excellence, open-source adoption, and creativity.
+- Final deliverables may include:
+  * platform (dashboard/interface/website/app);
+  * code base, appropriately commented/uploaded;
+  * documentation: SHORT PRESENTATION (7–10 SLIDES) describing the submission, including approach/methodology;
+  * demo video.
+
+The FAQ does not state the exact finalist pitch duration.
+
+Source:
+https://docs.google.com/document/d/1jU9k7CPBM221eW2iVwX839MdCna0lA4Xk4hUxLbkngM/edit
+Retrieved 2026-09-26.

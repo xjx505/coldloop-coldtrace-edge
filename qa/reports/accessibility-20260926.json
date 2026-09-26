@@ -1,0 +1,151 @@
+{
+  "generatedAt": "2026-09-26T09:36:01.714Z",
+  "status": "PASS",
+  "viewports": [
+    "390x844",
+    "1440x1000"
+  ],
+  "states": [
+    {
+      "state": "phone:no-data",
+      "violations": [],
+      "passes": 33,
+      "incomplete": []
+    },
+    {
+      "state": "phone:simulation-normal",
+      "violations": [],
+      "passes": 33,
+      "incomplete": []
+    },
+    {
+      "state": "phone:temperature-detail-dialog",
+      "violations": [],
+      "passes": 29,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "nodes": [
+            {
+              "target": [
+                ".detail-rule"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because it partially overlaps other elements"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "state": "phone:temperature-warning",
+      "violations": [],
+      "passes": 34,
+      "incomplete": []
+    },
+    {
+      "state": "phone:event-detail-dialog",
+      "violations": [],
+      "passes": 28,
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "nodes": [
+            {
+              "target": [
+                ".event-facts:nth-child(4) > div:nth-child(2) > strong"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because it partially overlaps other elements"
+            },
+            {
+              "target": [
+                ".event-explanation > p"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because it partially overlaps other elements"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "state": "phone:active-history",
+      "violations": [],
+      "passes": 33,
+      "incomplete": []
+    },
+    {
+      "state": "phone:recovered-history",
+      "violations": [],
+      "passes": 33,
+      "incomplete": []
+    },
+    {
+      "state": "phone:device",
+      "violations": [],
+      "passes": 34,
+      "incomplete": []
+    },
+    {
+      "state": "phone:settings",
+      "violations": [],
+      "passes": 39,
+      "incomplete": []
+    },
+    {
+      "state": "phone:settings-advanced",
+      "violations": [],
+      "passes": 40,
+      "incomplete": []
+    },
+    {
+      "state": "phone:coldtrace-s3-ready",
+      "violations": [],
+      "passes": 39,
+      "incomplete": []
+    },
+    {
+      "state": "phone:coldtrace-device",
+      "violations": [],
+      "passes": 35,
+      "incomplete": []
+    },
+    {
+      "state": "showcase:normal",
+      "violations": [],
+      "passes": 35,
+      "incomplete": []
+    },
+    {
+      "state": "showcase:warning",
+      "violations": [],
+      "passes": 35,
+      "incomplete": []
+    },
+    {
+      "state": "showcase:advanced-scenarios",
+      "violations": [],
+      "passes": 38,
+      "incomplete": []
+    },
+    {
+      "state": "showcase:coldtrace-s3-ready",
+      "violations": [],
+      "passes": 43,
+      "incomplete": []
+    },
+    {
+      "state": "showcase:s2-evaluation-alert",
+      "violations": [],
+      "passes": 43,
+      "incomplete": []
+    },
+    {
+      "state": "showcase:s2-evaluation-detail",
+      "violations": [],
+      "passes": 31,
+      "incomplete": []
+    }
+  ],
+  "failure": null
+}

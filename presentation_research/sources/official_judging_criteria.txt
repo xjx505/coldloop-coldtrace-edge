@@ -1,0 +1,19 @@
+Judging Criteria (Applicable to All Challenges)
+
+1. Solution Effectiveness and Prototype Readiness: How well the prototype addresses the selected challenge and demonstrates its core functionality.
+
+2. Creativity and Innovation: How original and innovative the team’s approach is compared with existing solutions.
+
+3. Scope and Effort: How appropriate and substantial the team’s work is, considering the hackathon timeframe.
+
+4. Technical Execution and Feasibility: How technically sound, well explained, and feasible the solution is using the available resources and technologies.
+
+5. Communication and Presentation: How clearly and convincingly the team communicates its solution, decisions, and potential impact.
+
+6. Open-Source Alignment: How effectively the solution uses open technologies and enables others to access, reuse, or adapt the work.
+
+7. Sustainability and SDG Alignment: How strongly the solution supports environmental sustainability and relevant UN Sustainable Development Goals.
+
+Source:
+https://docs.google.com/document/d/1isVnE1l3vsJNlaurhj2lZ-1M4u_Ki10oC2xrFw8zoAc/edit
+Retrieved 2026-09-26.

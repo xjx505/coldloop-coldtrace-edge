@@ -1,0 +1,8 @@
+
+> coldloop-app@1.0.0 qa:a11y
+> node scripts/qa-accessibility.mjs
+
+  ➜  Local:   http://127.0.0.1:4175/
+Accessibility audit: PASS
+States: 13
+Report: qa\reports\ACCESSIBILITY_AUDIT.md

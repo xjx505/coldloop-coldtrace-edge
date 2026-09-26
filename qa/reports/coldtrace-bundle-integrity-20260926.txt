@@ -1,0 +1,4 @@
+Portable bundle integrity check
+Expected: e63d373d7eed87e4e3c9aa1ad50056dcb77b0d8ba72f5bd3be2f9db5a5a68db4
+Observed: e63d373d7eed87e4e3c9aa1ad50056dcb77b0d8ba72f5bd3be2f9db5a5a68db4
+Match: True

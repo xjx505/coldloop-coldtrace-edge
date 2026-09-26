@@ -1,0 +1,38 @@
+Execute the master AI integration plan in this file:
+
+<LOCAL_USER_PATH>\Documents\ColdLoop\qa\COLDTRACE_AI_MASTER_EXECUTION_PLAN.md
+
+Before changing code, read these local files completely:
+- <LOCAL_USER_PATH>\Documents\ColdLoop\ai_bundle\LOCAL_BUNDLE_README.md
+- <LOCAL_USER_PATH>\Documents\ColdLoop\ai_bundle\coldtrace-android-ai-portable\README_INTEGRATION.md
+- <LOCAL_USER_PATH>\Documents\ColdLoop\qa\FINAL_APP_POLISH_DIRECTIVE.md
+- <LOCAL_USER_PATH>\Documents\ColdLoop\context\ARCHITECTURE.md
+- <LOCAL_USER_PATH>\Documents\ColdLoop\context\PRODUCT_REQUIREMENTS.md
+- <LOCAL_USER_PATH>\Documents\ColdLoop\context\HARDWARE_PROTOCOL.md
+- <LOCAL_USER_PATH>\Documents\ColdLoop\qa\QA_GATES.md
+
+All ColdTrace model, protocol, firmware-reference, parity-test, and replay files required for this task are already local under:
+
+<LOCAL_USER_PATH>\Documents\ColdLoop\ai_bundle
+
+Do not look for another workspace or external machine. Use the local bundle and local reference files only.
+
+Verified local ZIP SHA-256:
+e63d373d7eed87e4e3c9aa1ad50056dcb77b0d8ba72f5bd3be2f9db5a5a68db4
+
+The extracted local bundle has already passed:
+- 24 production parity vectors
+- 24 S2 evaluation-only parity vectors
+- warm-up gate
+- timestamp-gap gate
+
+Work phase-by-phase and preserve the current working ColdLoop app. Do not replace the app, do not add cloud inference, do not fabricate EDGE-3 inputs from the current DHT22/ENS160/MQ-135 node, and do not use the S2 evaluation model as the normal production model.
+
+Use efficient QA: targeted tests while developing, full suites only at the milestones defined in the plan, 390x844 for iterative visual work, and the complete viewport/Android/offline matrix only at final QA. Do not waste time repeatedly running expensive tests when the relevant code has not changed.
+
+The priority is a real offline Android product:
+compatible three-probe data -> exact 10-minute aggregation -> seven-row/60-minute history -> locally bundled ColdTrace model -> honest forecast state -> useful UI -> local history, with no prediction server dependency.
+
+Preserve the deterministic monitoring fallback so the demo survives even if physical ESP32/BLE fails.
+
+Do not merely summarize the plan. Execute it. Keep an explicit phase checklist and update evidence as you go. If you hit a real blocker, diagnose it and take the safest narrow path forward instead of redesigning the project. Never mark physical hardware success unless it was physically verified.

@@ -1,0 +1,15 @@
+Reboot The Earth Doha 2026 — Challenge 2
+
+Challenge 2: AI for Cold-Chain Monitoring and Food-Loss Reduction
+
+Problem:
+Fresh food can lose quality during transportation, storage, and distribution when temperature, humidity, or handling conditions are not properly maintained. In Qatar’s hot climate and import-dependent food system, these disruptions can shorten shelf life, increase costs, and generate avoidable food waste.
+
+Challenge:
+Develop an AI-powered tool that combines sensor readings, product information, location and time data, and transportation and storage records to detect cold-chain issues, estimate spoilage risk, and predict remaining shelf life.
+
+The solution should provide timely alerts and recommend practical actions, such as inspecting or rerouting shipments, adjusting storage conditions, prioritizing products for sale, or redirecting surplus food when food-safety requirements allow.
+
+Source:
+https://docs.google.com/document/d/1Jvi8vXR1ePPxMg6hVvUtk0kMcnnrRPqp3Xf-ddQExVQ/edit
+Retrieved 2026-09-26.

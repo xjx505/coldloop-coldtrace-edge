@@ -1,0 +1,181 @@
+{
+  "provenance": "REAL RECORDED STRAWBERRY THERMAL TRACE",
+  "shipment_id": "S2",
+  "source": "NifferLi article_release ALL_benchmark_W60.parquet",
+  "source_cadence_minutes": 10,
+  "accelerated_seconds_per_step": 1,
+  "source_location": "Original commercial shipments were not in Qatar",
+  "steps": [
+    {
+      "timestamp_iso": "2019-04-05T08:40:00Z",
+      "sensors": {
+        "Front_Middle": 1.7,
+        "Middle_Middle": null,
+        "Rear_Middle": 2.7
+      },
+      "observed_R2": false
+    },
+    {
+      "timestamp_iso": "2019-04-05T08:50:00Z",
+      "sensors": {
+        "Front_Middle": 1.7,
+        "Middle_Middle": null,
+        "Rear_Middle": 2.9
+      },
+      "observed_R2": false
+    },
+    {
+      "timestamp_iso": "2019-04-05T09:00:00Z",
+      "sensors": {
+        "Front_Middle": 1.7,
+        "Middle_Middle": null,
+        "Rear_Middle": 3.6
+      },
+      "observed_R2": false
+    },
+    {
+      "timestamp_iso": "2019-04-05T09:10:00Z",
+      "sensors": {
+        "Front_Middle": 1.7,
+        "Middle_Middle": null,
+        "Rear_Middle": 4.1
+      },
+      "observed_R2": false
+    },
+    {
+      "timestamp_iso": "2019-04-05T09:20:00Z",
+      "sensors": {
+        "Front_Middle": 1.6,
+        "Middle_Middle": null,
+        "Rear_Middle": 4.1
+      },
+      "observed_R2": false
+    },
+    {
+      "timestamp_iso": "2019-04-05T09:30:00Z",
+      "sensors": {
+        "Front_Middle": 1.6,
+        "Middle_Middle": null,
+        "Rear_Middle": 4.0
+      },
+      "observed_R2": false
+    },
+    {
+      "timestamp_iso": "2019-04-05T09:40:00Z",
+      "sensors": {
+        "Front_Middle": 1.6,
+        "Middle_Middle": null,
+        "Rear_Middle": 3.8
+      },
+      "observed_R2": false
+    },
+    {
+      "timestamp_iso": "2019-04-05T09:50:00Z",
+      "sensors": {
+        "Front_Middle": 1.6,
+        "Middle_Middle": null,
+        "Rear_Middle": 3.5
+      },
+      "observed_R2": false
+    },
+    {
+      "timestamp_iso": "2019-04-05T10:00:00Z",
+      "sensors": {
+        "Front_Middle": 1.5,
+        "Middle_Middle": null,
+        "Rear_Middle": 3.3
+      },
+      "observed_R2": false
+    },
+    {
+      "timestamp_iso": "2019-04-05T10:10:00Z",
+      "sensors": {
+        "Front_Middle": 1.5,
+        "Middle_Middle": null,
+        "Rear_Middle": 3.2
+      },
+      "observed_R2": false
+    },
+    {
+      "timestamp_iso": "2019-04-05T10:20:00Z",
+      "sensors": {
+        "Front_Middle": 1.5,
+        "Middle_Middle": null,
+        "Rear_Middle": 3.2
+      },
+      "observed_R2": false
+    },
+    {
+      "timestamp_iso": "2019-04-05T10:30:00Z",
+      "sensors": {
+        "Front_Middle": 1.5,
+        "Middle_Middle": null,
+        "Rear_Middle": 3.2
+      },
+      "observed_R2": false
+    },
+    {
+      "timestamp_iso": "2019-04-05T10:40:00Z",
+      "sensors": {
+        "Front_Middle": 1.5,
+        "Middle_Middle": null,
+        "Rear_Middle": 3.2
+      },
+      "observed_R2": false
+    },
+    {
+      "timestamp_iso": "2019-04-05T10:50:00Z",
+      "sensors": {
+        "Front_Middle": 1.4,
+        "Middle_Middle": null,
+        "Rear_Middle": 3.1
+      },
+      "observed_R2": false
+    },
+    {
+      "timestamp_iso": "2019-04-05T11:00:00Z",
+      "sensors": {
+        "Front_Middle": 1.4,
+        "Middle_Middle": null,
+        "Rear_Middle": 3.3
+      },
+      "observed_R2": false
+    },
+    {
+      "timestamp_iso": "2019-04-05T11:10:00Z",
+      "sensors": {
+        "Front_Middle": 1.4,
+        "Middle_Middle": null,
+        "Rear_Middle": 3.8
+      },
+      "observed_R2": false
+    },
+    {
+      "timestamp_iso": "2019-04-05T11:20:00Z",
+      "sensors": {
+        "Front_Middle": 1.5,
+        "Middle_Middle": null,
+        "Rear_Middle": 4.6
+      },
+      "observed_R2": false
+    },
+    {
+      "timestamp_iso": "2019-04-05T11:30:00Z",
+      "sensors": {
+        "Front_Middle": 1.5,
+        "Middle_Middle": null,
+        "Rear_Middle": 5.4
+      },
+      "observed_R2": false
+    },
+    {
+      "timestamp_iso": "2019-04-05T11:40:00Z",
+      "sensors": {
+        "Front_Middle": 1.5,
+        "Middle_Middle": null,
+        "Rear_Middle": 5.1
+      },
+      "observed_R2": true
+    }
+  ]
+}

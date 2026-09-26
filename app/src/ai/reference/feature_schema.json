@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "window_samples": 7,
+  "window_minutes": 60,
+  "cadence_minutes": 10,
+  "high_reference_c": 4.0,
+  "low_reference_c": 0.0,
+  "sensor_configurations": {
+    "EDGE-1": ["Middle_Middle"],
+    "EDGE-3": ["Front_Middle", "Middle_Middle", "Rear_Middle"]
+  },
+  "features": {
+    "EDGE-1": ["temp_now", "mean_60", "std_60", "min_60", "max_60", "range_60", "delta_60", "slope_10", "slope_20", "slope_60", "acceleration", "over_4_count", "over_4_auc", "under_0_count", "coverage", "max_missing_streak"],
+    "EDGE-3_EXTRA": ["spatial_range_now", "spatial_std_now", "spatial_range_mean_60", "spatial_range_max_60", "front_rear_gradient", "spatial_coverage"]
+  }
+}

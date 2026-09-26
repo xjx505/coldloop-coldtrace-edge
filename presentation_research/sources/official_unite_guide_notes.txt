@@ -1,0 +1,22 @@
+Unite Ideas Instructions Guide — notes
+
+The guide is a four-page visual submission walkthrough.
+
+It covers:
+- sign in/register;
+- navigate to the Reboot campaign;
+- choose "Submit Your Idea";
+- read submission guidance;
+- select the challenge;
+- complete required fields;
+- save draft;
+- submit;
+- continue updating demo/code/details before the deadline where allowed.
+
+No additional PowerPoint layout, pitch-time, typography, or slide-design requirements were found in the guide.
+
+Source:
+https://drive.google.com/file/d/1ewtgINfuksfL9fPlIgYj3zZe6-I-JxiL/view
+Local PDF:
+presentation_research\sources\pdf\official_unite_ideas_guide.pdf
+Retrieved 2026-09-26.

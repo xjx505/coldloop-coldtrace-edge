@@ -1,0 +1,35 @@
+APK: <LOCAL_USER_PATH>\Documents\ColdLoop\app\android\app\build\outputs\apk\debug\app-debug.apk
+Size: 4412459
+SHA-256: 2E0759260FA5581E703BB70B94FC563B687BB1217769EE9E7AAC9CFFF7CA32BD
+aapt dump permissions:
+package: com.coldloop.monitor
+uses-permission: name='android.permission.INTERNET'
+uses-permission: name='android.permission.BLUETOOTH' maxSdkVersion='30'
+uses-permission: name='android.permission.BLUETOOTH_ADMIN' maxSdkVersion='30'
+uses-permission: name='android.permission.ACCESS_COARSE_LOCATION' maxSdkVersion='30'
+uses-permission: name='android.permission.ACCESS_FINE_LOCATION' maxSdkVersion='30'
+uses-permission: name='android.permission.BLUETOOTH_SCAN'
+uses-permission: name='android.permission.BLUETOOTH_CONNECT'
+permission: com.coldloop.monitor.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+uses-permission: name='com.coldloop.monitor.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION'
+Relevant manifest XML tree:
+A: android:name(0x01010003)="android.permission.BLUETOOTH_ADMIN" (Raw: "android.permission.BLUETOOTH_ADMIN")
+A: android:name(0x01010003)="android.permission.ACCESS_FINE_LOCATION" (Raw: "android.permission.ACCESS_FINE_LOCATION")
+A: android:name(0x01010003)="android.permission.BLUETOOTH_SCAN" (Raw: "android.permission.BLUETOOTH_SCAN")
+A: android:usesPermissionFlags(0x01010644)=(type 0x11)0x10000
+A: android:name(0x01010003)="android.permission.BLUETOOTH_CONNECT" (Raw: "android.permission.BLUETOOTH_CONNECT")
+A: android:name(0x01010003)="android.hardware.bluetooth_le" (Raw: "android.hardware.bluetooth_le")
+
+Runtime permission and scanner exercise (emulator only; 2026-09-26)
+Device: ColdLoop_API_36 / emulator-5554, Android 16 / API 36
+APK: com.coldloop.monitor v1.0, SHA-256 2E0759260FA5581E703BB70B94FC563B687BB1217769EE9E7AAC9CFFF7CA32BD
+
+1. Initial package state had BLUETOOTH_SCAN and BLUETOOTH_CONNECT granted=false.
+2. Tapping Connect sensor opened Android's Nearby devices runtime permission dialog; see android-permission-prompt-20260926.png.
+3. Denying the request returned to ColdLoop with "Nearby devices permission needed"; the Settings action opened Android App info and the Nearby devices permission page. See android-permission-denied-20260926.png and android-permission-details-20260926.png.
+4. Selecting Allow in Android settings made both BLUETOOTH_SCAN and BLUETOOTH_CONNECT report granted=true in dumpsys package. See android-permission-granted-settings-20260926.png.
+5. Returning to ColdLoop and tapping Connect sensor proceeded into the plugin's native BLE device picker ("Looking for ColdLoop-01..."). See android-ble-picker-20260926.png.
+6. With no peripheral attached, the picker changed to "No ColdLoop node found" after its scan window. Cancel returned to the app with "Scan cancelled" and no crash. See android-ble-picker-result-20260926.png and android-ble-no-device-return-20260926.png.
+7. The filtered AndroidRuntime/BluetoothLe/Capacitor error log is empty: android-permission-logcat-20260926.txt.
+
+This verifies Android runtime permission request, denial, settings recovery, grant, and entry into the native scanner on an API 36 emulator. It does not verify a physical phone, over-the-air peripheral discovery, GATT connection, notifications, or sensor behavior. The emulator's "No ColdLoop node found" picker state is not evidence of physical radio compatibility.

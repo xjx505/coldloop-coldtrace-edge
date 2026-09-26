@@ -1,0 +1,7 @@
+Read and follow this file as a binding final-polish directive before making further app/UI changes:
+
+<LOCAL_USER_PATH>\Documents\ColdLoop\qa\FINAL_APP_POLISH_DIRECTIVE.md
+
+Also keep the existing AGENTS.md, UX_SPEC.md, QA_GATES.md, INTERACTION_MATRIX.md, and scientific-truth rules in force.
+
+Your job is to execute that directive, not merely summarize it. Preserve the current good visual design. Focus first on a polished deterministic simulation fallback in case the ESP32/BLE hardware fails, simplify the judge-facing showcase, reduce duplicate demo labeling, improve Device/Settings hierarchy, and perform the accessibility pass. Then run the required visual/interaction QA loop and regenerate final evidence. Do not mark the task complete from compile/tests alone.

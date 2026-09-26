@@ -1,0 +1,28 @@
+Read these local files before doing anything:
+
+<LOCAL_USER_PATH>\Documents\ColdLoop\qa\FINAL_APP_POLISH_DIRECTIVE.md
+<LOCAL_USER_PATH>\Documents\ColdLoop\qa\COLDTRACE_OFFLINE_AI_INTEGRATION_PLAN.md
+<LOCAL_USER_PATH>\Documents\ColdLoop\ai_bundle\LOCAL_BUNDLE_README.md
+<LOCAL_USER_PATH>\Documents\ColdLoop\ai_bundle\coldtrace-android-ai-portable\README_INTEGRATION.md
+
+IMPORTANT: This is a DISCUSSION/PLANNING pass only. Do not modify app code, firmware, Android resources, tests, or UI yet.
+
+All required model, protocol, parity-test, firmware-reference, and replay artifacts are already local under:
+
+<LOCAL_USER_PATH>\Documents\ColdLoop\ai_bundle
+
+Use those local files only.
+
+Verified local ZIP SHA-256:
+e63d373d7eed87e4e3c9aa1ad50056dcb77b0d8ba72f5bd3be2f9db5a5a68db4
+
+First inspect the current ColdLoop architecture and the integration plan. Then return a concrete implementation sequence, call out contradictions or risks, and explicitly address:
+- fully offline inference inside the real Capacitor Android app;
+- EDGE-3 input compatibility;
+- production-model versus S2 evaluation-model isolation;
+- deterministic hardware fallback;
+- predictive replay;
+- source/event isolation;
+- usability and placement of the forecast UI.
+
+Do not start implementation until the user approves the plan.
