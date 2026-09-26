@@ -1,10 +1,10 @@
 # ColdLoop morning runbook
 
-The current source, web showcase and local replay are prepared. A fresh Android APK has been built, but the latest APK has not yet been installed and exercised on the emulator. If time allows, complete section 0 before the physical bring-up. No physical sensor or phone-to-node BLE result is claimed.
+The v1.0.1-demo software release is published. The exact 6,691,136-byte Android debug APK (SHA-256 `71113663c66f6fff1f45a7bcaa5b003c4690d4aa26149f6da9591c4cd8a945e0`) passed emulator install and journey QA: 32 screenshots, 51 steps, zero WebView exceptions and zero external requests. The web journey passed 101 screenshots across 360x800, 390x844, 412x915 and 1440x1000; accessibility passed 18 states with zero axe violations. Only physical sensor and phone-to-node BLE checks remain unverified.
 
 ## 0. Verify the latest Android build
 
-The APK was rebuilt after the latest source and branding changes at `app/android/app/build/outputs/apk/debug/app-debug.apk` (4,767,382 bytes, SHA-256 `58B7A34214610B170F2D3E482D1FC5B6042CE53BF28AAA103ECD67115E2FE88E`). Install and run the emulator journey against that exact artifact before presenting the Android build:
+The current release APK is `deliverables/ColdLoop-Android-debug.apk` (6,691,136 bytes; SHA-256 `71113663c66f6fff1f45a7bcaa5b003c4690d4aa26149f6da9591c4cd8a945e0`). It has already been installed and exercised on `emulator-5554`; results are in `qa/reports/android-journey.json`. To repeat the acceptance journey after a code change:
 
 ```powershell
 $adb = Join-Path $env:LOCALAPPDATA 'Android\Sdk\platform-tools\adb.exe'
@@ -91,8 +91,8 @@ State only what was observed: temperature/humidity, sensor readiness, broad rela
 Still to verify on the actual board and phone: board-specific wiring and ADC voltage, sensor readings/readiness, advertising and Android BLE permission, notification sequence updates, and the safe excursion→warning→history→recovery path. No emulator, mock transport or screenshot substitutes for these checks.
 ## Published judge links
 
-Web demo: https://coldloop-coldtrace-edge.netlify.app
+Web showcase: https://coldloop-coldtrace-edge.netlify.app/showcase
 Public source and evidence: https://github.com/xjx505/coldloop-coldtrace-edge
-Installable debug APK and firmware assets: https://github.com/xjx505/coldloop-coldtrace-edge/releases/tag/v0.1.0-demo
-The APK in that release was built and hash-verified, but the exact release APK still needs emulator install/navigation/lifecycle validation before claiming final runtime QA. Physical sensor and phone-to-ESP32 BLE checks remain required.
+Latest debug APK, firmware and model bundle: https://github.com/xjx505/coldloop-coldtrace-edge/releases/tag/v1.0.1-demo
 
+The exact APK in the latest release passed emulator installation and the 32-screenshot Android journey. Physical sensor and phone-to-ESP32 BLE checks remain required; follow sections 1–4 on the actual board and phone.

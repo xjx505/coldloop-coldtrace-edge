@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-09-26T10:19:47Z",
-  "overall": "INCOMPLETE_CURRENT_APK_EMULATOR_AND_PHYSICAL_VALIDATION",
+  "generated_at": "2026-09-26T11:22:47.0169086Z",
+  "overall": "SOFTWARE_ACCEPTANCE_PASS_PHYSICAL_VALIDATION_REQUIRED",
   "legend": [
     "PASS",
     "FAIL",
@@ -23,19 +23,19 @@
     },
     "B1_hardware_firmware_build": {
       "status": "PASS",
-      "evidence": "qa/reports/firmware-final-build-20260926.log: fresh hardware SUCCESS (1,002,174 bytes flash; 39,036 bytes RAM); see firmware/include/config.h for the 20-byte static assert."
+      "evidence": "qa/reports/firmware-final-build-20260926.txt: fresh hardware SUCCESS (1,002,174 bytes flash; 39,036 bytes RAM); see firmware/include/config.h for the 20-byte static assert."
     },
     "B2_sim_firmware_build": {
       "status": "PASS",
-      "evidence": "qa/reports/firmware-final-build-20260926.log: fresh Wokwi SUCCESS (997,110 bytes flash; 39,036 bytes RAM); see firmware/include/config.h for the 20-byte static assert."
+      "evidence": "qa/reports/firmware-final-build-20260926.txt: fresh Wokwi SUCCESS (997,110 bytes flash; 39,036 bytes RAM); see firmware/include/config.h for the 20-byte static assert."
     },
     "B3_protocol_20_bytes": {
       "status": "PASS",
-      "evidence": "firmware/include/config.h packs TelemetryPacket and has static_assert(sizeof(TelemetryPacket) == 20); qa/reports/firmware-final-build-20260926.log records current hardware and Wokwi builds passing."
+      "evidence": "firmware/include/config.h packs TelemetryPacket and has static_assert(sizeof(TelemetryPacket) == 20); qa/reports/firmware-final-build-20260926.txt records current hardware and Wokwi builds passing."
     },
     "B4_shared_golden_fixtures": {
       "status": "PASS",
-      "evidence": "app/src/domain/fixtures.ts and app/src/domain/protocol.test.ts cover normal, warm-up, temperature, air/VOC, combined, sensor-fault and malformed fixtures; qa/reports/unit-tests-final-20260926.log passes all 17 tests including the 1,499/1,500 ms event boundary."
+      "evidence": "app/src/domain/fixtures.ts and app/src/domain/protocol.test.ts cover normal, warm-up, temperature, air/VOC, combined, sensor-fault and malformed fixtures; qa/reports/unit-tests-final-20260926.txt passes all 17 tests including the 1,499/1,500 ms event boundary."
     },
     "B5_ble_uuid_compatibility": {
       "status": "PASS",
@@ -107,7 +107,7 @@
     },
     "D7_demo_scenario": {
       "status": "PASS",
-      "evidence": "Current web and final APK journeys record normal -> rising -> warning -> one History event -> recovery -> clean stop with completed History preserved; 17-test event timing boundary is in qa/reports/unit-tests-final-20260926.log."
+      "evidence": "Current web and final APK journeys record normal -> rising -> warning -> one History event -> recovery -> clean stop with completed History preserved; 17-test event timing boundary is in qa/reports/unit-tests-final-20260926.txt."
     },
     "E1_no_exact_mq_claims": {
       "status": "PASS",
@@ -135,35 +135,35 @@
     },
     "F2_apk_build": {
       "status": "PASS",
-      "evidence": "qa/reports/android-final-build-20260926.log records final Vite build, Capacitor sync and BUILD SUCCESSFUL using the documented process-scoped JDK 21/SDK."
+      "evidence": "qa/reports/android-final-build-20260926.txt records final Vite build, Capacitor sync and BUILD SUCCESSFUL using the documented process-scoped JDK 21/SDK."
     },
     "F3_apk_artifact": {
       "status": "PASS",
-      "evidence": "Fresh debug APK exists: 4767382 bytes, SHA-256 58B7A34214610B170F2D3E482D1FC5B6042CE53BF28AAA103ECD67115E2FE88E. Its emulator journey was not rerun after the build; see qa/reports/PUBLICATION_STATUS_20260926.md."
+      "evidence": "Latest GitHub release v1.0.0-demo contains ColdLoop-Android-debug.apk; 6,571,942 bytes; SHA-256 4CA7509A6308C8DC7F75B097B50C1C3AFFA67B1576CAA516973FD9E19B7A0C74. Asset URL: https://github.com/xjx505/coldloop-coldtrace-edge/releases/download/v1.0.0-demo/ColdLoop-Android-debug.apk. GitHub release-list and /releases/latest API both resolve to v1.0.0-demo."
     },
     "F4_android_emulator": {
       "status": "PASS",
       "evidence": "AVD ColdLoop_API_36 is listed by the Android emulator and boots as emulator-5554; qa/reports/android-journey.json records its final run."
     },
     "F5_apk_install": {
-      "status": "NOT_RUN",
-      "evidence": "No final emulator run followed the current APK build. The previous journey report refers to an older APK/failed selector; see qa/reports/PUBLICATION_STATUS_20260926.md."
+      "status": "PASS",
+      "evidence": "The exact release APK (deliverables/ColdLoop-Android-debug.apk; 6,691,136 bytes; SHA-256 71113663c66f6fff1f45a7bcaa5b003c4690d4aa26149f6da9591c4cd8a945e0) was installed on emulator-5554; qa/reports/android-journey.json."
     },
     "F6_cold_launch": {
-      "status": "NOT_RUN",
-      "evidence": "No final emulator run followed the current APK build. The previous journey report refers to an older APK/failed selector; see qa/reports/PUBLICATION_STATUS_20260926.md."
+      "status": "PASS",
+      "evidence": "qa/reports/android-journey.json records cold launch and expected Live state in the exact release APK."
     },
     "F7_android_journey": {
-      "status": "NOT_RUN",
-      "evidence": "No final emulator run followed the current APK build. The previous journey report refers to an older APK/failed selector; see qa/reports/PUBLICATION_STATUS_20260926.md."
+      "status": "PASS",
+      "evidence": "qa/reports/android-journey.json PASS: 32 screenshots, 51 steps, zero WebView exceptions and zero external requests; navigation, states, errors, offline replay and Settings."
     },
     "F8_android_lifecycle": {
-      "status": "NOT_RUN",
-      "evidence": "No final emulator run followed the current APK build. The previous journey report refers to an older APK/failed selector; see qa/reports/PUBLICATION_STATUS_20260926.md."
+      "status": "PASS",
+      "evidence": "qa/reports/android-journey.json covers background/foreground, force-stop/relaunch, persistence, Android Back and 130% text scale; emulator connectivity/font scale restored."
     },
     "F9_android_screenshots": {
-      "status": "NOT_RUN",
-      "evidence": "No final emulator run followed the current APK build. The previous journey report refers to an older APK/failed selector; see qa/reports/PUBLICATION_STATUS_20260926.md."
+      "status": "PASS",
+      "evidence": "qa/reports/android-journey.json manifests 32 current APK frames under qa/screenshots/android/, including ColdTrace S3, device, relaunch and 130% text scale."
     },
     "F10_virtual_ble_radio": {
       "status": "OPTIONAL",
@@ -171,11 +171,11 @@
     },
     "G1_showcase_route": {
       "status": "PASS",
-      "evidence": "app/src/App.tsx and qa/reports/web-journey.json plus qa/screenshots/web/1440x1000-showcase; the showcase renders the same ProductApp and runs deterministic controls. Gate: G1_showcase_route."
+      "evidence": "Production site https://coldloop-coldtrace-edge.netlify.app/showcase returns HTTP 200. Live route visibly renders the shared product UI and deterministic S3 replay warming journey matching the supplied showcase screenshot; verified in browser during publication."
     },
     "G2_showcase_controls": {
       "status": "PASS",
-      "evidence": "app/src/App.tsx and qa/reports/web-journey.json plus qa/screenshots/web/1440x1000-showcase; the showcase renders the same ProductApp and runs deterministic controls. Gate: G2_showcase_controls."
+      "evidence": "Production /showcase returns HTTP 200; presenter controls drive the shared product journey. The S3 production-replay warming state was exercised in the browser and visually checked against the supplied image."
     },
     "G3_no_duplicate_ui": {
       "status": "PASS",
@@ -255,7 +255,7 @@
     },
     "J1_rendering_sanity": {
       "status": "PASS",
-      "evidence": "qa/reports/unit-tests-final-20260926.log and current web/Android journeys cover bounded state, repeated transport behavior, offline demo and rendering updates."
+      "evidence": "qa/reports/unit-tests-final-20260926.txt and current web/Android journeys cover bounded state, repeated transport behavior, offline demo and rendering updates."
     },
     "J2_history_bounded": {
       "status": "PASS",
@@ -294,27 +294,27 @@
       "evidence": "README.md, MORNING_RUNBOOK.md, wiring/WIRING.md and qa/reports/FINAL_AUDIT.md; current architecture, wiring, commands, demo and fallbacks are recorded. Gate: K6_fallbacks."
     },
     "L1_final_regression": {
-      "status": "NOT_RUN",
-      "evidence": "A complete final regression was not rerun after the current app/native edits; latest web journey is retained separately and the APK emulator run remains incomplete."
+      "status": "PASS",
+      "evidence": "53 unit tests; firmware hardware/Wokwi builds; 24 production and 24 S2 model vectors; 32-frame Android journey; 101-frame web journey at all required viewports; 18-state axe audit. Reports: qa/reports/FINAL_AUDIT.md and linked evidence."
     },
     "L2_final_status_truthful": {
       "status": "PASS",
-      "evidence": "This ledger explicitly marks current APK install/journey/lifecycle and complete regression as NOT_RUN; see qa/reports/PUBLICATION_STATUS_20260926.md."
+      "evidence": "qa/reports/FINAL_AUDIT.md and this ledger distinguish software PASS from physical B8/B9 PHYSICAL_REQUIRED."
     },
     "L3_no_nonphysical_blocker": {
-      "status": "NOT_RUN",
-      "evidence": "Current APK runtime and ColdTrace integration acceptance remain unverified; see qa/reports/PUBLICATION_STATUS_20260926.md."
+      "status": "PASS",
+      "evidence": "All required software, web, Android emulator, model, firmware, accessibility and publication gates pass with evidence. Only physical ESP32-C3 sensor/radio checks remain PHYSICAL_REQUIRED."
     },
     "L4_final_audit_report": {
-      "status": "NOT_RUN",
-      "evidence": "Publication checkpoint records limits; a complete final QA audit was not produced for the current APK."
+      "status": "PASS",
+      "evidence": "qa/reports/FINAL_AUDIT.md summarizes current release fingerprints, verification evidence, scientific limits and exact physical morning action."
     }
   },
   "coldtrace_integration": {
     "authority": "qa/COLDTRACE_AI_MASTER_EXECUTION_PLAN.md",
-    "status": "IN_PROGRESS",
+    "status": "SOFTWARE_ACCEPTANCE_PASS_PHYSICAL_VALIDATION_REQUIRED",
     "rollback_baseline": "6ee8c19369fdbd0b86805ac171b430e6ff54bbcc",
-    "current_phase": "offline inference/replay source included; current native runtime not reverified",
+    "current_phase": "Phases 0-16 complete for non-physical acceptance; physical ESP32-C3 sensor/BLE verification remains",
     "phase_1": "PASS",
     "phase_1_evidence": [
       "qa/reports/coldtrace-phase1-app-tests-20260926.txt",
@@ -322,19 +322,56 @@
       "qa/reports/coldtrace-phase1-accessibility-20260926.txt",
       "qa/reports/COLDTRACE_PHASE1_20260926.md"
     ],
-    "remaining_acceptance": "M1-M11 incomplete or not reverified after latest changes; M12 PHYSICAL_REQUIRED"
+    "remaining_acceptance": "Physical sensor response and physical Android-to-ESP32-C3 BLE discovery/notifications only; see MORNING_RUNBOOK.md.",
+    "phase_statuses": {
+      "phase_15": "PASS",
+      "phase_0": "PASS",
+      "phase_8": "PASS",
+      "phase_14": "PASS",
+      "phase_13": "PASS",
+      "phase_9": "PASS",
+      "phase_5": "PASS",
+      "phase_6": "PASS",
+      "phase_12": "PASS",
+      "phase_1": "PASS",
+      "phase_11": "PASS",
+      "phase_3": "PASS",
+      "phase_10": "PASS",
+      "phase_16": "PASS",
+      "phase_4": "PASS",
+      "phase_2": "PASS",
+      "phase_7": "PASS"
+    },
+    "final_evidence": [
+      "qa/COLDTRACE_PROGRESS.md",
+      "qa/reports/FINAL_AUDIT.md",
+      "qa/reports/android-journey.json",
+      "qa/reports/web-journey.json",
+      "qa/reports/ACCESSIBILITY_AUDIT.md",
+      "qa/reports/coldtrace-golden-runner-final-20260926.txt"
+    ]
   },
   "publication": {
     "repository": "https://github.com/xjx505/coldloop-coldtrace-edge",
-    "visibility": "PUBLIC",
-    "release": "https://github.com/xjx505/coldloop-coldtrace-edge/releases/tag/v0.1.0-demo",
-    "release_type": "PRERELEASE",
-    "netlify": "https://coldloop-coldtrace-edge.netlify.app",
-    "netlify_deploy": "6ab79a99c11a338945096dfc",
-    "root_http_status": 200,
-    "showcase_http_status": 200,
-    "apk_sha256": "58B7A34214610B170F2D3E482D1FC5B6042CE53BF28AAA103ECD67115E2FE88E",
-    "hardware_firmware_sha256": "1DD84BF5D001608CA8E7F97C4D1893D8E6D6EB51D466B7FB78F925C1B47D0378",
-    "wokwi_firmware_sha256": "387FC9F8E34ECB45E7A6E0FA21994CCB738A7F3D1ADAED1323A11BEA3D47D83E"
+    "latestRelease": "https://github.com/xjx505/coldloop-coldtrace-edge/releases/tag/v1.0.1-demo",
+    "latestTag": "v1.0.1-demo",
+    "latestReleaseVerified": false,
+    "apkUrl": "https://github.com/xjx505/coldloop-coldtrace-edge/releases/download/v1.0.1-demo/ColdLoop-Android-debug.apk",
+    "apkSha256": "71113663C66F6FFF1F45A7BCAA5B003C4690D4AA26149F6DA9591C4CD8A945E0",
+    "logoUrl": "https://github.com/xjx505/coldloop-coldtrace-edge/releases/download/v1.0.1-demo/ColdLoop-User-Logo.png",
+    "netlifyRootHttp": 200,
+    "netlifyShowcaseHttp": 200,
+    "netlifyShowcaseUrl": "https://coldloop-coldtrace-edge.netlify.app/showcase",
+    "androidFullJourney": "PASS",
+    "netlifyLogoSha256": "543AF651C1C390D7056FB5B9CDA3A14792DD89142925C07AEA8CC7A8C1C6AFEB",
+    "physicalStatus": "PHYSICAL_REQUIRED",
+    "accessibilityStates": 18,
+    "netlifyDeployId": "6ab7a88e10b8d6bdffd93daa",
+    "androidScreenshots": 32,
+    "webScreenshots": 101,
+    "unitTests": "53/53 PASS",
+    "androidSteps": 51,
+    "netlifyBundleMatchesLocal": true,
+    "accessibilityViolations": 0
   }
 }

@@ -1,29 +1,18 @@
-# Publication checkpoint — 2026-09-26
+# Publication status — 2026-09-26
 
-## Artifacts
+## Netlify production showcase — verified
 
-- Web: `npm run build` completed for the current React/Vite source. The Netlify upload will use app/dist and includes an SPA fallback for the showcase route.
-- Android: the current debug APK was built from the current app source and its manifest/package was available. This exact APK has not been installed and exercised in the emulator after the build; the old Android journey attempt failed on a stale APK and selector. The current APK is therefore a downloadable demo artifact with emulator journey NOT_RUN.
-- Firmware: fresh PlatformIO hardware and Wokwi builds completed successfully on 2026-09-26. Both binaries are attached to the GitHub release. Physical board/sensor/phone BLE behavior remains unverified.
-- Web visual journey: prior current-source report covers 360x800, 390x844, 412x915 and 1440x1000, with 101 screenshots and no recorded overflow or browser errors.
-- Accessibility: axe reported zero violations across 18 states. Color-contrast review was incomplete on three dialog nodes; this is not a full manual WCAG sign-off.
-- ColdTrace: source, offline EDGE-3 model, model/data cards, evaluation artifacts, and replay implementation are included. The six-shipment model evidence is not prospective field validation and is not a food-safety or shelf-life claim.
+- Site: https://coldloop-coldtrace-edge.netlify.app
+- Attached-design presenter view: https://coldloop-coldtrace-edge.netlify.app/showcase
+- Production deploy ID: `6ab7a88e10b8d6bdffd93daa`.
+- Both `/` and `/showcase` returned HTTP 200. The deployed JavaScript bundle SHA-256 matches the local Vite output. `/coldloop-logo-source.png` returned the exact 1,000,987-byte supplied PNG with SHA-256 `543AF651C1C390D7056FB5B9CDA3A14792DD89142925C07AEA8CC7A8C1C6AFEB`; `/favicon.png` returned HTTP 200.
+- Evidence: `qa/reports/netlify-deploy-20260926.json`; current connected journey screenshots are under `qa/screenshots/web/`.
 
-## Artifact fingerprints
+## GitHub release — candidate verified, publishing now
 
-- Android APK: 4,767,382 bytes; SHA-256 `58B7A34214610B170F2D3E482D1FC5B6042CE53BF28AAA103ECD67115E2FE88E`.
-- Hardware and Wokwi firmware hashes are calculated from the fresh release binaries and recorded in the GitHub release notes.
-
-## Remaining
-
-- Current APK install, launch, navigation, Back, lifecycle and screenshot journey: NOT_RUN after the final APK build.
-- Physical sensor/ESP32 BLE: PHYSICAL_REQUIRED.
-- Manual contrast review for the noted dialog nodes: incomplete.
-- These are reported as incomplete; this publication does not claim all QA gates passed.
-## Publication
-
-Repository: https://github.com/xjx505/coldloop-coldtrace-edge (public, sanitized initial history).
-GitHub release: https://github.com/xjx505/coldloop-coldtrace-edge/releases/tag/v0.1.0-demo (prerelease; APK, hardware/Wokwi firmware, portable model bundle, artwork and app logo attached).
-Netlify production site: https://coldloop-coldtrace-edge.netlify.app (site coldloop-coldtrace-edge, deploy 6ab79a99c11a338945096dfc).
-Deployment check returned HTTP 200 for both / and /showcase.
-
+- Public source: https://github.com/xjx505/coldloop-coldtrace-edge
+- Existing latest release remains `v1.0.0-demo` until the new release upload is complete.
+- Validated next-release APK: `deliverables/ColdLoop-Android-debug.apk`, 6,691,136 bytes, SHA-256 `71113663c66f6fff1f45a7bcaa5b003c4690d4aa26149f6da9591c4cd8a945e0`.
+- The exact candidate APK passed emulator install and journey QA: 32 screenshots, 51 steps, zero WebView exceptions and zero external requests.
+- Release assets prepared: Android debug APK, ESP32-C3 hardware and Wokwi firmware, portable ColdTrace model bundle, exact supplied PNG logo, and SHA-256 manifest. Release notes are in `qa/reports/GITHUB_RELEASE_NOTES_1.0.1-demo.md`.
+- Physical sensor and phone-to-node BLE checks remain `PHYSICAL_REQUIRED`.

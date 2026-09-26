@@ -28,19 +28,19 @@ The objective is to integrate that AI into the real Android app without:
 
 Verified local bundle:
 
-`C:\\Users\\xjx50\\Documents\\ColdLoop\\ai_bundle\\coldtrace-android-ai-portable.zip`
+`%USERPROFILE%\\Documents\\ColdLoop\\ai_bundle\\coldtrace-android-ai-portable.zip`
 
 Extracted bundle:
 
-`C:\\Users\\xjx50\\Documents\\ColdLoop\\ai_bundle\\coldtrace-android-ai-portable`
+`%USERPROFILE%\\Documents\\ColdLoop\\ai_bundle\\coldtrace-android-ai-portable`
 
 Integration guide:
 
-`C:\\Users\\xjx50\\Documents\\ColdLoop\\ai_bundle\\coldtrace-android-ai-portable\\README_INTEGRATION.md`
+`%USERPROFILE%\\Documents\\ColdLoop\\ai_bundle\\coldtrace-android-ai-portable\\README_INTEGRATION.md`
 
 Local artifact map:
 
-`C:\\Users\\xjx50\\Documents\\ColdLoop\\ai_bundle\\LOCAL_BUNDLE_README.md`
+`%USERPROFILE%\\Documents\\ColdLoop\\ai_bundle\\LOCAL_BUNDLE_README.md`
 
 ZIP SHA-256 independently rechecked:
 

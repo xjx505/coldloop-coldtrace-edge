@@ -1,8 +1,8 @@
 # ColdTrace integration baseline
 
-Date: 2026-09-26 (Asia/Qatar)  
-Repository: <LOCAL_USER_PATH>\Documents\ColdLoop  
-Starting HEAD: e081607504f53e812456c8575939fd4cc7b40ec8  
+Date: 2026-09-26 (Asia/Qatar)
+Repository: %USERPROFILE%\Documents\ColdLoop
+Starting HEAD: e081607504f53e812456c8575939fd4cc7b40ec8
 Working branch: master
 
 This baseline captures the existing ColdLoop product before any ColdTrace app-code integration. The starting working tree already contains the completed React/Vite/Capacitor product and its evidence as uncommitted changes. A dedicated local baseline commit was created before further refactoring: 6ee8c19369fdbd0b86805ac171b430e6ff54bbcc.

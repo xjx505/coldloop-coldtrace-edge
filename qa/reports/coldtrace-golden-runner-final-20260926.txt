@@ -1,0 +1,9 @@
+{
+  "result": "PASS",
+  "production_vectors": 24,
+  "evaluation_only_s2_vectors": 24,
+  "warmup_gate": "MODEL WARM-UP",
+  "gap_gate": "MODEL WARM-UP",
+  "ready_score": 0.7332706472848242,
+  "threshold": 0.5
+}

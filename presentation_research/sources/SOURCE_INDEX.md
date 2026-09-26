@@ -164,12 +164,12 @@ Downloaded:
 ## C. ColdLoop project truth sources
 
 Primary local repository:
-`<LOCAL_USER_PATH>\Documents\ColdLoop`
+`%USERPROFILE%\Documents\ColdLoop`
 
 Presentation handoff:
-`<LOCAL_USER_PATH>\Downloads\ColdLoop_ColdTrace_Final_Team_Handoff.md`
+`%USERPROFILE%\Downloads\ColdLoop_ColdTrace_Final_Team_Handoff.md`
 
 Raw historical archive:
-`<LOCAL_USER_PATH>\Documents\ColdLoop\ChatGPT-Cold Chain Concept Compare-20260925-2213.md`
+`%USERPROFILE%\Documents\ColdLoop\ChatGPT-Cold Chain Concept Compare-20260925-2213.md`
 
 Use project artifacts/QA as stronger evidence than old prose summaries.

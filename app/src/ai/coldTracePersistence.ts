@@ -1,4 +1,4 @@
-import type { Edge3AggregateRow } from "./aggregation";
+import { EDGE3_CADENCE_MS, type Edge3AggregateRow } from "./aggregation";
 import { PRODUCTION_MODEL_ID } from "./productionModel";
 import type { ForecastEvent } from "./prediction";
 
@@ -6,6 +6,7 @@ const EVENTS_KEY = "coldloop.coldtrace.events.v1";
 const HISTORY_KEY = "coldloop.coldtrace.history.v1";
 const MAX_FORECAST_EVENTS = 100;
 const POSITIONS = ["Front_Middle", "Middle_Middle", "Rear_Middle"] as const;
+export const EDGE3_HISTORY_STALE_GRACE_MS = 60_000;
 
 function storageAvailable(): boolean {
   try { return typeof localStorage !== "undefined"; } catch { return false; }
@@ -58,14 +59,19 @@ function validHistory(value: unknown): value is PersistedEdge3History {
   let previous = 0;
   return history.rows.every((row, index) => {
     if (!row || typeof row !== "object" || typeof row.timestampMs !== "number" || !Number.isFinite(row.timestampMs)
+      || !Number.isInteger(row.timestampMs) || row.timestampMs < 0 || row.timestampMs % EDGE3_CADENCE_MS !== 0
       || typeof row.sampleCount !== "number" || !Number.isInteger(row.sampleCount) || row.sampleCount < 0
       || typeof row.validProbeCount !== "number" || !Number.isInteger(row.validProbeCount) || row.validProbeCount < 0 || row.validProbeCount > 3
       || typeof row.sensorErrorCount !== "number" || !Number.isInteger(row.sensorErrorCount) || row.sensorErrorCount < 0
       || typeof row.gap !== "boolean" || !row.probes || typeof row.probes !== "object") return false;
     if (index > 0 && row.timestampMs - previous !== 600_000) return false;
     previous = row.timestampMs;
-    return POSITIONS.every((position) => row.probes[position] === null
-      || typeof row.probes[position] === "number" && Number.isFinite(row.probes[position]));
+    const temperatures = POSITIONS.map((position) => row.probes[position]);
+    const presentCount = temperatures.filter((temperature) => temperature !== null).length;
+    if (presentCount !== row.validProbeCount || row.sampleCount < presentCount
+      || row.gap !== (row.sampleCount === 0) || (row.sampleCount === 0) !== (presentCount === 0)) return false;
+    return temperatures.every((temperature) => temperature === null
+      || typeof temperature === "number" && Number.isFinite(temperature) && temperature >= -55 && temperature <= 125);
   });
 }
 
@@ -74,7 +80,13 @@ export function loadEdge3History(sourceIdentity: string, now = Date.now()): Pers
   try {
     const parsed = JSON.parse(localStorage.getItem(HISTORY_KEY) ?? "null") as unknown;
     if (!validHistory(parsed) || parsed.sourceIdentity !== sourceIdentity || parsed.rows.length !== 7) return null;
-    if (parsed.lastValidTimestamp !== parsed.rows[6].timestampMs || parsed.lastValidTimestamp > now + 60_000) return null;
+    if (parsed.lastValidTimestamp !== parsed.rows[6].timestampMs) return null;
+    // A stored timestamp is the bucket start. A bucket is only completed when
+    // the first packet in the next bucket arrives, so allow one cadence plus a
+    // short restart grace after that completion before treating it as stale.
+    const completedAt = parsed.lastValidTimestamp + EDGE3_CADENCE_MS;
+    if (completedAt > now + EDGE3_HISTORY_STALE_GRACE_MS
+      || now - completedAt > EDGE3_HISTORY_STALE_GRACE_MS) return null;
     return { ...parsed, rows: parsed.rows.map((row) => ({ ...row, probes: { ...row.probes } })) };
   } catch { return null; }
 }

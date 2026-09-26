@@ -1,3 +1,6 @@
+## Current publication decision — 2026-09-26
+
+Publish the current debug APK as the non-prerelease `v1.0.1-demo` latest release, keeping source/evidence in the public `main` branch. Keep the attached product showcase at the existing Netlify site `/showcase`. Use the exact user-supplied PNG as the source mark; keep the original PNG attached and hash-verifiable. Physical sensor/radio claims stay pending until an actual board and handset are exercised.
 # Decisions and Rejected Directions
 
 This file prevents rediscovering abandoned ideas after context compaction.
@@ -155,3 +158,7 @@ Warning should tolerate noise rather than trigger from a single reading.
 
 ## Public release scope — 2026-09-26
 Published a fresh-history snapshot because the local Git history contains an unrelated raw ChatGPT conversation archive and five third-party source PDFs. The public snapshot omits those materials and the superseded screenshot archive, excludes caches/build outputs/local settings, scrubs workstation paths, and preserves the source index and citations. Model source, model/evaluation artifacts, Apache-2.0 notices, app/firmware source, and current web evidence remain included.
+
+
+## Latest-release selection — 2026-09-26
+GitHub refuses to mark a prerelease as the latest release. The requested demo artifact is therefore published as tag v1.0.0-demo, with the release marked non-prerelease and its notes explicitly describing a debug/demo distribution. This makes GitHub's Latest link resolve to the APK while retaining the demo/debug qualification.

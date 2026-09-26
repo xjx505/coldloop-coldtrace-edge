@@ -1,7 +1,7 @@
 # ColdTrace Phase 1 — P1 stabilization
 
 Date: 2026-09-26 (Asia/Qatar)
-Project: <LOCAL_USER_PATH>\Documents\ColdLoop
+Project: %USERPROFILE%\Documents\ColdLoop
 Rollback baseline: 6ee8c19369fdbd0b86805ac171b430e6ff54bbcc
 
 ## Defects corrected

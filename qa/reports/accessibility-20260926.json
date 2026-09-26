@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-26T09:36:01.714Z",
+  "generatedAt": "2026-09-26T11:12:42.135Z",
   "status": "PASS",
   "viewports": [
     "390x844",
@@ -101,7 +101,7 @@
     {
       "state": "phone:coldtrace-s3-ready",
       "violations": [],
-      "passes": 39,
+      "passes": 40,
       "incomplete": []
     },
     {
@@ -145,6 +145,34 @@
       "violations": [],
       "passes": 31,
       "incomplete": []
+    }
+  ],
+  "manualChecks": [
+    {
+      "check": "Reduced motion",
+      "status": "PASS",
+      "evidence": "working indicator animation duration 0.00001s"
+    },
+    {
+      "check": "Live status announcement",
+      "status": "PASS",
+      "evidence": ".header-status uses role=status"
+    },
+    {
+      "check": "ColdTrace chart text alternatives",
+      "status": "PASS",
+      "evidence": [
+        {
+          "selector": ".edge3-chart",
+          "role": "img",
+          "label": "Completed 10-minute temperature windows. Front Middle 1.6 degrees Celsius, 1.6 degrees Celsius, 1.6 degrees Celsius, 1.6 degrees Celsius, 1.6 degrees Celsius, 1.6 degrees Celsius, 1.6 degrees Celsius. Middle Middle 1.6 degrees Celsius, 1.7 degrees Celsius, 1.7 degrees Celsius, 1.7 degrees Celsius, 1.7 degrees Celsius, 1.7 degrees Celsius, 1.7 degrees Celsius. Rear Middle 1.4 degrees Celsius, 1.4 degrees Celsius, 1.5 degrees Celsius, 1.5 degrees Celsius, 1.5 degrees Celsius, 1.6 degrees Celsius, 1.6 degrees Celsius"
+        },
+        {
+          "selector": ".score-scale",
+          "role": "img",
+          "label": "Raw model score 0.130 on a zero to one scale. Alert threshold 0.50."
+        }
+      ]
     }
   ],
   "failure": null

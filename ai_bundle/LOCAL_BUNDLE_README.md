@@ -4,50 +4,50 @@ All files required for ColdTrace Edge integration are stored locally in this Col
 
 ## Local root
 
-`<LOCAL_USER_PATH>\Documents\ColdLoop\ai_bundle`
+`%USERPROFILE%\Documents\ColdLoop\ai_bundle`
 
 ## Portable bundle
 
 ZIP:
-`<LOCAL_USER_PATH>\Documents\ColdLoop\ai_bundle\coldtrace-android-ai-portable.zip`
+`%USERPROFILE%\Documents\ColdLoop\ai_bundle\coldtrace-android-ai-portable.zip`
 
 Extracted bundle:
-`<LOCAL_USER_PATH>\Documents\ColdLoop\ai_bundle\coldtrace-android-ai-portable`
+`%USERPROFILE%\Documents\ColdLoop\ai_bundle\coldtrace-android-ai-portable`
 
 Integration guide:
-`<LOCAL_USER_PATH>\Documents\ColdLoop\ai_bundle\coldtrace-android-ai-portable\README_INTEGRATION.md`
+`%USERPROFILE%\Documents\ColdLoop\ai_bundle\coldtrace-android-ai-portable\README_INTEGRATION.md`
 
 Production model:
-`<LOCAL_USER_PATH>\Documents\ColdLoop\ai_bundle\coldtrace-android-ai-portable\model\edge_model.json`
+`%USERPROFILE%\Documents\ColdLoop\ai_bundle\coldtrace-android-ai-portable\model\edge_model.json`
 
 Production parity vectors:
-`<LOCAL_USER_PATH>\Documents\ColdLoop\ai_bundle\coldtrace-android-ai-portable\tests\all_six_parity_vectors.json`
+`%USERPROFILE%\Documents\ColdLoop\ai_bundle\coldtrace-android-ai-portable\tests\all_six_parity_vectors.json`
 
 Golden test:
-`<LOCAL_USER_PATH>\Documents\ColdLoop\ai_bundle\coldtrace-android-ai-portable\tests\run_golden_tests.mjs`
+`%USERPROFILE%\Documents\ColdLoop\ai_bundle\coldtrace-android-ai-portable\tests\run_golden_tests.mjs`
 
 Evaluation-only S2 model:
-`<LOCAL_USER_PATH>\Documents\ColdLoop\ai_bundle\coldtrace-android-ai-portable\evaluation_only\edge_model_s2_loso.json`
+`%USERPROFILE%\Documents\ColdLoop\ai_bundle\coldtrace-android-ai-portable\evaluation_only\edge_model_s2_loso.json`
 
 Evaluation-only S2 parity vectors:
-`<LOCAL_USER_PATH>\Documents\ColdLoop\ai_bundle\coldtrace-android-ai-portable\evaluation_only\s2_heldout_parity_vectors.json`
+`%USERPROFILE%\Documents\ColdLoop\ai_bundle\coldtrace-android-ai-portable\evaluation_only\s2_heldout_parity_vectors.json`
 
 ## Exact EDGE-3 reference files
 
 Protocol:
-`<LOCAL_USER_PATH>\Documents\ColdLoop\ai_bundle\reference\EDGE3_PROTOCOL.md`
+`%USERPROFILE%\Documents\ColdLoop\ai_bundle\reference\EDGE3_PROTOCOL.md`
 
 Firmware reference:
-`<LOCAL_USER_PATH>\Documents\ColdLoop\ai_bundle\reference\EDGE3_FIRMWARE_MAIN.cpp`
+`%USERPROFILE%\Documents\ColdLoop\ai_bundle\reference\EDGE3_FIRMWARE_MAIN.cpp`
 
 Telemetry / packet / aggregation reference:
-`<LOCAL_USER_PATH>\Documents\ColdLoop\ai_bundle\reference\EDGE3_TELEMETRY_REFERENCE.js`
+`%USERPROFILE%\Documents\ColdLoop\ai_bundle\reference\EDGE3_TELEMETRY_REFERENCE.js`
 
 S2 replay trace:
-`<LOCAL_USER_PATH>\Documents\ColdLoop\ai_bundle\reference\S2_REPLAY_TRACE.json`
+`%USERPROFILE%\Documents\ColdLoop\ai_bundle\reference\S2_REPLAY_TRACE.json`
 
 Normal replay trace:
-`<LOCAL_USER_PATH>\Documents\ColdLoop\ai_bundle\reference\NORMAL_REPLAY_TRACE.json`
+`%USERPROFILE%\Documents\ColdLoop\ai_bundle\reference\NORMAL_REPLAY_TRACE.json`
 
 ## Integrity
 

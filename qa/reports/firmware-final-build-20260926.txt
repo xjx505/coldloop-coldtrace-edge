@@ -1,0 +1,61 @@
+Processing hardware (platform: espressif32; board: esp32-c3-devkitm-1; framework: arduino)
+--------------------------------------------------------------------------------
+Verbose mode can be enabled via `-v, --verbose` option
+CONFIGURATION: https://docs.platformio.org/page/boards/espressif32/esp32-c3-devkitm-1.html
+PLATFORM: Espressif 32 (7.1.3) > Espressif ESP32-C3-DevKitM-1
+HARDWARE: ESP32C3 160MHz, 320KB RAM, 4MB Flash
+DEBUG: Current (cmsis-dap) External (cmsis-dap, esp-bridge, esp-builtin, esp-prog, iot-bus-jtag, jlink, minimodule, olimex-arm-usb-ocd, olimex-arm-usb-ocd-h, olimex-arm-usb-tiny-h, olimex-jtag-tiny, tumpa)
+PACKAGES:
+ - framework-arduinoespressif32 @ 4.20017.260907+sha.dcc1105b
+ - tool-esptoolpy @ 2.41100.260830 (4.11.0)
+ - toolchain-riscv32-esp @ 8.4.0+2021r2-patch5
+LDF: Library Dependency Finder -> https://bit.ly/configure-pio-ldf
+LDF Modes: Finder ~ chain, Compatibility ~ soft
+Found 35 compatible libraries
+Scanning dependencies...
+Dependency Graph
+|-- DHT sensor library @ 1.4.7
+|-- Adafruit Unified Sensor @ 1.1.15
+|-- ESP32 BLE Arduino @ 2.0.0
+|-- Wire @ 2.0.0
+Building in release mode
+Retrieving maximum program size .pio\build\hardware\firmware.elf
+Checking size .pio\build\hardware\firmware.elf
+Advanced Memory Usage is available via "PlatformIO Home > Project Inspect"
+RAM:   [=         ]  11.9% (used 39036 bytes from 327680 bytes)
+Flash: [========  ]  76.5% (used 1002174 bytes from 1310720 bytes)
+========================= [SUCCESS] Took 8.33 seconds =========================
+
+Processing wokwi (platform: espressif32; board: esp32-c3-devkitm-1; framework: arduino)
+--------------------------------------------------------------------------------
+Verbose mode can be enabled via `-v, --verbose` option
+CONFIGURATION: https://docs.platformio.org/page/boards/espressif32/esp32-c3-devkitm-1.html
+PLATFORM: Espressif 32 (7.1.3) > Espressif ESP32-C3-DevKitM-1
+HARDWARE: ESP32C3 160MHz, 320KB RAM, 4MB Flash
+DEBUG: Current (cmsis-dap) External (cmsis-dap, esp-bridge, esp-builtin, esp-prog, iot-bus-jtag, jlink, minimodule, olimex-arm-usb-ocd, olimex-arm-usb-ocd-h, olimex-arm-usb-tiny-h, olimex-jtag-tiny, tumpa)
+PACKAGES:
+ - framework-arduinoespressif32 @ 4.20017.260907+sha.dcc1105b
+ - tool-esptoolpy @ 2.41100.260830 (4.11.0)
+ - toolchain-riscv32-esp @ 8.4.0+2021r2-patch5
+LDF: Library Dependency Finder -> https://bit.ly/configure-pio-ldf
+LDF Modes: Finder ~ chain, Compatibility ~ soft
+Found 35 compatible libraries
+Scanning dependencies...
+Dependency Graph
+|-- DHT sensor library @ 1.4.7
+|-- Adafruit Unified Sensor @ 1.1.15
+|-- ESP32 BLE Arduino @ 2.0.0
+|-- Wire @ 2.0.0
+Building in release mode
+Retrieving maximum program size .pio\build\wokwi\firmware.elf
+Checking size .pio\build\wokwi\firmware.elf
+Advanced Memory Usage is available via "PlatformIO Home > Project Inspect"
+RAM:   [=         ]  11.9% (used 39036 bytes from 327680 bytes)
+Flash: [========  ]  76.1% (used 997110 bytes from 1310720 bytes)
+========================= [SUCCESS] Took 4.33 seconds =========================
+
+Environment    Status    Duration
+-------------  --------  ------------
+hardware       SUCCESS   00:00:08.328
+wokwi          SUCCESS   00:00:04.328
+========================= 2 succeeded in 00:00:12.656 =========================

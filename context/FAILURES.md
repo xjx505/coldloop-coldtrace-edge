@@ -1,3 +1,6 @@
+## Latest release-candidate verification — 2026-09-26
+
+No non-physical blocker remains. The current APK passed the Android emulator journey; the current web journey and 18-state axe audit passed; 53 unit tests passed; model parity and both firmware builds passed. The Netlify production showcase is live and its deployed bundle and supplied PNG were hash-verified. Remaining checks are physical-only: sensor behavior and BLE notifications with an actual ESP32-C3 and Android handset. See `qa/FINAL_STATUS.json` and `MORNING_RUNBOOK.md`.
 # Failure Memory
 
 Record failed approaches here so future turns do not rediscover them.
@@ -5,10 +8,10 @@ Record failed approaches here so future turns do not rediscover them.
 ## 2026-09-25: supervisor control test path mistake
 
 A Codex desktop test was instructed to create:
-`<LOCAL_USER_PATH>\Documents\ColdLoop\SUPERVISOR_TEST.txt`
+`%USERPROFILE%\Documents\ColdLoop\SUPERVISOR_TEST.txt`
 
 Codex instead created:
-`<LOCAL_USER_PATH>\Documents\ColdLoop\SUPERVISOR\_TEST.txt`
+`%USERPROFILE%\Documents\ColdLoop\SUPERVISOR\_TEST.txt`
 
 with correct contents but wrong path, then claimed completion.
 
@@ -65,7 +68,7 @@ Attempt:
 Started the journey runner on port 4173, then opened that port for the phone QA run.
 
 Evidence:
-The browser report recorded repeated 404s and a failed Vite WebSocket; the listening process on `0.0.0.0:4173` was PID 26768 running `<LOCAL_USER_PATH>\Downloads\welcome-app-work\node_modules\.bin\..\vite\bin\vite.js`. Its page never rendered ColdLoop.
+The browser report recorded repeated 404s and a failed Vite WebSocket; the listening process on `0.0.0.0:4173` was PID 26768 running `%USERPROFILE%\Downloads\welcome-app-work\node_modules\.bin\..\vite\bin\vite.js`. Its page never rendered ColdLoop.
 
 Why it failed:
 Port 4173 was already occupied by an unrelated project, so that run did not exercise ColdLoop and is not product evidence.
@@ -129,7 +132,7 @@ Attempt:
 Used `pio device list` from a fresh shell to look for a connected ESP32-C3.
 
 Evidence:
-PowerShell reported that `pio` was not recognized. The project build wrapper and `MORNING_RUNBOOK.md` use `<LOCAL_USER_PATH>\Documents\ColdLoop\.venv\Scripts\pio.exe`.
+PowerShell reported that `pio` was not recognized. The project build wrapper and `MORNING_RUNBOOK.md` use `%USERPROFILE%\Documents\ColdLoop\.venv\Scripts\pio.exe`.
 
 Why it failed:
 PlatformIO is installed in the project virtual environment, not on the shell's global `Path`.
@@ -151,7 +154,7 @@ Why it failed:
 The simulated timeout promise rejected before the test attached its rejection handler.
 
 Replacement:
-Attach the `rejects` expectation before advancing fake time. That run passed all 14 tests across five files; the final updated regression later passes 17 tests in `qa/reports/unit-tests-final-20260926.log`.
+Attach the `rejects` expectation before advancing fake time. That run passed all 14 tests across five files; the final updated regression later passes 17 tests in `qa/reports/unit-tests-final-20260926.txt`.
 
 Retry allowed? yes, corrected and included in the final regression.
 
@@ -202,7 +205,7 @@ Why it failed:
 The inherited install is a JRE, so it cannot compile Capacitor's Java sources.
 
 Replacement:
-Use the already installed user-local Temurin JDK 21 and Android SDK in process-scoped `JAVA_HOME`, `ANDROID_HOME`, `ANDROID_SDK_ROOT` and `Path`, as documented in `MORNING_RUNBOOK.md`. The final build succeeds in `qa/reports/android-final-build-20260926.log`; no global environment was changed.
+Use the already installed user-local Temurin JDK 21 and Android SDK in process-scoped `JAVA_HOME`, `ANDROID_HOME`, `ANDROID_SDK_ROOT` and `Path`, as documented in `MORNING_RUNBOOK.md`. The final build succeeds in `qa/reports/android-final-build-20260926.txt`; no global environment was changed.
 
 Retry allowed? yes, with the documented JDK 21 environment.
 
@@ -250,7 +253,7 @@ Why it failed:
 The CLI needs the firmware project directory (or an explicit `-d firmware`).
 
 Replacement:
-Run `..\.venv\Scripts\pio.exe run -e hardware -e wokwi` from `firmware/`. The fresh final dual-target build passes in `qa/reports/firmware-final-build-20260926.log`.
+Run `..\.venv\Scripts\pio.exe run -e hardware -e wokwi` from `firmware/`. The fresh final dual-target build passes in `qa/reports/firmware-final-build-20260926.txt`.
 
 Retry allowed? yes, from the firmware project directory.
 
@@ -275,3 +278,13 @@ Status: fixed. Final phase 1 test/build/accessibility outputs are recorded in qa
 
 ## 2026-09-26 public release evidence
 The final Android QA attempt used an older APK and failed at a stale ColdTrace selector. The selector was corrected, but the user requested skipping further test runs for the deadline, so the current 4,767,382-byte APK build was not installed or journey-tested. See qa/reports/PUBLICATION_STATUS_20260926.md.
+
+
+### 2026-09-26: gh release view does not expose isLatest in its JSON fields
+Attempt:
+Requested isLatest from gh release view --json while verifying the newly published release.
+Evidence:
+GitHub CLI returned Unknown JSON field: isLatest and listed supported fields; the release itself remained published.
+Replacement:
+Used gh release list --json isLatest,... and queried GitHub's /releases/latest API endpoint. Both resolved to v1.0.0-demo; gh release view verified uploaded APK and PNG assets.
+Retry allowed? yes, through supported release-list/API surfaces; do not repeat the unsupported field request.

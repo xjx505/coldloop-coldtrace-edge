@@ -1,16 +1,16 @@
 # ColdLoop visual and interaction audit
 
-Date: 2026-09-26  
-Result: PASS  
-Unresolved P0: 0  
+Date: 2026-09-26
+Result: PASS
+Unresolved P0: 0
 Unresolved P1: 0
 
 ## Final evidence set
 
-- Web/showcase: `qa/reports/web-journey.json` PASS; 84 screenshots cover the connected app flow and operational states at 360x800, 390x844 and 412x915, plus `/showcase` at 1440x1000. All four viewports report zero horizontal overflow, page errors or console errors.
-- Android: `qa/reports/android-journey.json` PASS; the final APK run records 24 screenshots, 38 steps, zero WebView runtime exceptions and no fatal AndroidRuntime exception. The journey includes real touch activation, navigation, Back, background/foreground, cold restart, and persisted Settings/History.
+- Web/showcase: `qa/reports/web-journey.json` PASS; 101 screenshots cover the connected app flow and operational states at 360x800, 390x844 and 412x915, plus `/showcase` at 1440x1000. All four viewports report zero horizontal overflow, page errors or console errors.
+- Android: `qa/reports/android-journey.json` PASS; the exact release APK run records 32 screenshots, 51 steps, zero WebView runtime exceptions and no fatal AndroidRuntime exception. The journey includes real touch activation, navigation, Back, background/foreground, cold restart, and persisted Settings/History.
 - Larger-text Android check: system font scale 1.3, captured in `qa/screenshots/android/21-font-scale-130-live.png`, `22-font-scale-130-settings.png` and `23-font-scale-130-settings-scroll.png`; the emulator preference was restored to 1.0 after capture.
-- Accessibility: `qa/reports/ACCESSIBILITY_AUDIT.md` and `accessibility-20260926.json` PASS with zero axe violations across 13 representative states; keyboard skip link, modal focus loop, Escape, and focus return are covered. The two color-contrast items axe marked incomplete are manually reviewed; the foreground/surface CSS token combinations exceed 5:1. Android screenshots show the same high-contrast surfaces at the larger text scale.
+- Accessibility: `qa/reports/ACCESSIBILITY_AUDIT.md` and `accessibility-20260926.json` PASS with zero axe violations across 18 representative states; keyboard skip link, modal focus loop, Escape, and focus return are covered. The two color-contrast items axe marked incomplete are manually reviewed; the foreground/surface CSS token combinations exceed 5:1. Android screenshots show the same high-contrast surfaces at the larger text scale.
 
 ## Journeys reviewed
 
@@ -28,7 +28,7 @@ The operational state set includes ENS160 warming/fault, DHT22 fault, no device,
 - Device health emphasizes node/sensor readiness; connection metadata remains in expandable details. Settings exposes only functional controls and a progressive advanced section.
 - An active event could display `1s` immediately after its 1.5-second threshold rule fired because elapsed time was rounded down. Duration now rounds to the nearest second; the unit boundary test verifies no event at 1,499 ms and event creation at 1,500 ms. The regenerated warning frame shows `2s`.
 - The Android harness now tolerates the normal `pidof` launch/stop race and reconnects to WebView DevTools after screenshot I/O. Its final cold-launch, foreground and restart frames show the expected surfaces.
-- A final manifest check found 24 older, unreferenced web frames (including a pre-polish duplicate-Demo showcase image). They were preserved under `qa/screenshots/archive/superseded-web-20260926/`; the current web screenshot directory now matches the 84-frame journey manifest exactly. The current desktop warning frame is qa/screenshots/web/1440x1000-showcase/03-showcase-warning.png.
+- A final manifest check found 24 older, unreferenced web frames (including a pre-polish duplicate-Demo showcase image). They were preserved under `qa/screenshots/archive/superseded-web-20260926/`; the current web screenshot directory now matches the 101-frame journey manifest exactly. The current desktop warning frame is qa/screenshots/web/1440x1000-showcase/03-showcase-warning.png.
 
 The palette stays warm-neutral with restrained state colors. Charts carry trend/threshold meaning; the dashed threshold is labelled. No decorative-only visual, emoji UI, unsupported spoilage metric, exact MQ-135 gas claim, direct-CO2 claim, or food-safety certification appears. Normal remains calm, while warning escalation uses a clear red banner and value state.
 

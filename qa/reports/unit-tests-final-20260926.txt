@@ -1,0 +1,13 @@
+
+> coldloop-app@1.0.0 test
+> vitest run --reporter=dot
+
+
+ RUN  v5.0.2 %USERPROFILE%/Documents/ColdLoop/app
+
+·····················································
+
+ Test Files  13 passed (13)
+      Tests  53 passed (53)
+   Start at  14:08:17
+   Duration  869ms (transform 67%, import 22%, tests 7%, worker 3%)

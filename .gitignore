@@ -30,4 +30,6 @@ __pycache__/
 *.py[cod]
 public-snapshot/
 
-release-assets/
+
+# Netlify local site link state
+.netlify/

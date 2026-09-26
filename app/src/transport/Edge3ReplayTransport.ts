@@ -32,6 +32,7 @@ export class Edge3ReplayTransport implements TelemetryTransport {
   private stepIndex = 0;
   private sequence = 0;
   private timer: ReturnType<typeof setTimeout> | undefined;
+  private readonly uptimeByStep: number[];
 
   constructor(
     private readonly trace: Edge3ReplayTrace,
@@ -41,6 +42,24 @@ export class Edge3ReplayTransport implements TelemetryTransport {
     this.sequence = startingSequence & 0xffff;
     if (trace.source_cadence_minutes !== 10) throw new Error("EDGE-3 replay trace cadence must be 10 minutes.");
     if (trace.steps.length === 0) throw new Error("EDGE-3 replay trace has no observations.");
+    const recordedTimes = trace.steps.map(({ timestamp_iso }) => {
+      if (!/(?:Z|[+-]\d{2}:\d{2})$/i.test(timestamp_iso)) {
+        throw new Error("EDGE-3 replay timestamps must include an explicit UTC offset.");
+      }
+      const timestamp = Date.parse(timestamp_iso);
+      if (!Number.isFinite(timestamp)) throw new Error("EDGE-3 replay trace contains an invalid timestamp.");
+      return timestamp;
+    });
+    for (let index = 1; index < recordedTimes.length; index += 1) {
+      const delta = recordedTimes[index] - recordedTimes[index - 1];
+      if (delta <= 0 || delta % EDGE3_CADENCE_MS !== 0) {
+        throw new Error("EDGE-3 replay timestamps must be chronological multiples of the 10-minute cadence.");
+      }
+    }
+    this.uptimeByStep = recordedTimes.map((timestamp) => timestamp - recordedTimes[0]);
+    if (this.uptimeByStep.some((uptimeMs) => uptimeMs > 0xffff_ffff)) {
+      throw new Error("EDGE-3 replay trace exceeds the packet uptime range.");
+    }
   }
 
   setHandlers(handlers: TransportHandlers): void {
@@ -71,7 +90,7 @@ export class Edge3ReplayTransport implements TelemetryTransport {
     if (!this.connected || this.completed) return;
     const step = this.trace.steps[this.stepIndex];
     if (!step) return;
-    const offsetMs = this.stepIndex * EDGE3_CADENCE_MS;
+    const offsetMs = this.uptimeByStep[this.stepIndex];
     for (const position of ["Front_Middle", "Middle_Middle", "Rear_Middle"] as const) {
       const temperatureC = step.sensors[position];
       if (temperatureC === null) continue;

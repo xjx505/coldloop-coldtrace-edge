@@ -20,6 +20,7 @@ const steps = [];
 const runtimeExceptions = [];
 const networkRequests = new Set();
 let previousConnectivity;
+let previousFontScale;
 let activeCdp;
 
 function ensure(condition, message) {
@@ -277,6 +278,7 @@ async function main() {
     wifi: await adb("shell", "settings", "get", "global", "wifi_on").catch(() => "1"),
     mobileData: await adb("shell", "settings", "get", "global", "mobile_data").catch(() => "1"),
   };
+  previousFontScale = await adb("shell", "settings", "get", "system", "font_scale").catch(() => "1.0");
   await adb("forward", "--remove", `tcp:${debugPort}`).catch(() => undefined);
   await execFileAsync(adbPath, ["devices", "-l"], { encoding: "utf8", windowsHide: true });
   await adb("install", "-r", apkPath);
@@ -475,6 +477,33 @@ async function main() {
   ({ cdp, target, pid } = await capture(cdp, "25-coldtrace-offline-relaunch-ready"));
   steps.push("Kill/relaunch then repeat offline replay completed deterministically without a stored stale window");
 
+  await adb("shell", "settings", "put", "system", "font_scale", "1.3");
+  cdp.close();
+  activeCdp = undefined;
+  await adb("forward", "--remove", `tcp:${debugPort}`).catch(() => undefined);
+  await adb("shell", "am", "force-stop", packageId);
+  await adb("shell", "monkey", "-p", packageId, "1");
+  await waitUntil(appPid, "ColdLoop did not restart for the larger-text check", 20_000);
+  await waitForResumedActivity();
+  ({ cdp, target, pid } = await connectWebView());
+  await waitForSelector(cdp, '[data-screen="live"]', "Larger-text launch did not show Live");
+  ({ cdp, target, pid } = await capture(cdp, "26-font-scale-130-live"));
+  await click(cdp, '.app-header button[aria-label="Open settings"]');
+  await waitForSelector(cdp, '[data-screen="settings"]', "Settings did not open at larger text scale");
+  ({ cdp, target, pid } = await capture(cdp, "27-font-scale-130-settings"));
+  const scroll = await cdp.evaluate(`(() => {
+    const main = document.querySelector('.app-main');
+    if (!main) return null;
+    main.scrollTop = main.scrollHeight;
+    return { top: main.scrollTop, max: main.scrollHeight - main.clientHeight };
+  })()`);
+  ensure(scroll && scroll.max > 0 && scroll.top > 0, "Larger-text Settings did not expose a scrollable lower section");
+  await delay(300);
+  ({ cdp, target, pid } = await capture(cdp, "28-font-scale-130-settings-scroll"));
+  await adb("shell", "input", "keyevent", "4");
+  await waitForSelector(cdp, '[data-screen="live"]', "Android Back did not leave larger-text Settings");
+  steps.push("130% Android text scale kept Live and scrollable Settings usable; emulator scale is restored in cleanup");
+
   const externalRequests = [...networkRequests].filter((rawUrl) => {
     try { const host = new URL(rawUrl).hostname; return !["localhost", "127.0.0.1", "::1"].includes(host); }
     catch { return false; }
@@ -503,6 +532,9 @@ try {
   if (previousConnectivity) {
     await execFileAsync(adbPath, ["-s", serial, "shell", "svc", "wifi", previousConnectivity.wifi === "1" ? "enable" : "disable"], { encoding: "utf8", windowsHide: true }).catch(() => undefined);
     await execFileAsync(adbPath, ["-s", serial, "shell", "svc", "data", previousConnectivity.mobileData === "1" ? "enable" : "disable"], { encoding: "utf8", windowsHide: true }).catch(() => undefined);
+  }
+  if (previousFontScale) {
+    await execFileAsync(adbPath, ["-s", serial, "shell", "settings", "put", "system", "font_scale", previousFontScale], { encoding: "utf8", windowsHide: true }).catch(() => undefined);
   }
 }
 const report = {

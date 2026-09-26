@@ -7,7 +7,7 @@ import { Icon } from "./components/Icon";
 import { DeviceScreen, EventDetail, ForecastEventDetail, HistoryScreen, LiveScreen, MetricDetail, SettingsScreen } from "./screens/ProductScreens";
 
 function statusCopy(status: string, replayComplete = false): string {
-  if (replayComplete) return "Replay complete";
+  if (replayComplete) return "Complete";
   switch (status) {
     case "connected": return "Connected";
     case "scanning": return "Scanning";
@@ -53,7 +53,7 @@ function ProductApp({ controller, embedded = false }: { controller: AppControlle
       </> : <>
         <div className="header-title"><span className="section-label">{state.sourceSession?.profile === "edge3-15byte" ? "THERMAL FORECAST" : "CONDITION MONITORING"}</span><div className="header-brand"><img src="/coldloop-logo.png" alt="" aria-hidden="true" /><h1>{state.sourceSession?.profile === "edge3-15byte" ? "ColdTrace Edge" : "ColdLoop"}</h1></div></div>
         <div className="header-actions">
-          <span className={`header-status ${statusTone(state.connection)}`} role="status"><i aria-hidden="true" />{statusCopy(state.connection, state.replayComplete)}</span>
+          <span className={`header-status ${statusTone(state.connection)}`} role="status" aria-label={state.replayComplete ? "Replay complete" : undefined}><i aria-hidden="true" />{statusCopy(state.connection, state.replayComplete)}</span>
           <button className="icon-button" onClick={() => controller.navigate("settings")} aria-label="Open settings"><Icon name="settings" /></button>
         </div>
       </>}

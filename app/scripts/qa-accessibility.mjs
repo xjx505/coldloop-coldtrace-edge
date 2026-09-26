@@ -13,6 +13,7 @@ const baseUrl = "http://127.0.0.1:4175";
 const viteCli = path.join(appDir, "node_modules", "vite", "bin", "vite.js");
 const axePath = path.join(appDir, "node_modules", "axe-core", "axe.min.js");
 const results = [];
+const manualChecks = [];
 
 function ensure(condition, message) {
   if (!condition) throw new Error(message);
@@ -66,6 +67,20 @@ async function runPhoneAudit(browser) {
   const page = await context.newPage();
   try {
     await page.goto(`${baseUrl}/`, { waitUntil: "networkidle" });
+    await page.emulateMedia({ reducedMotion: "reduce" });
+    const reducedMotionSeconds = await page.evaluate(() => {
+      const status = document.querySelector(".header-status");
+      const dot = status?.querySelector("i");
+      status?.classList.add("working");
+      const value = getComputedStyle(dot).animationDuration;
+      status?.classList.remove("working");
+      const amount = Number.parseFloat(value);
+      return value.trim().endsWith("ms") ? amount / 1000 : amount;
+    });
+    ensure(reducedMotionSeconds <= 0.00001, `Reduced-motion animation duration is not suppressed (${reducedMotionSeconds}s)`);
+    manualChecks.push({ check: "Reduced motion", status: "PASS", evidence: `working indicator animation duration ${reducedMotionSeconds}s` });
+    ensure(await page.locator('.header-status[role="status"]').count() === 1, "Connection state is missing a live status announcement");
+    manualChecks.push({ check: "Live status announcement", status: "PASS", evidence: ".header-status uses role=status" });
     await audit(page, "phone:no-data");
 
     await page.keyboard.press("Tab");
@@ -120,6 +135,12 @@ async function runPhoneAudit(browser) {
     await page.getByRole("button", { name: "S3 replay", exact: true }).click();
     await page.getByRole("button", { name: "Live", exact: true }).click();
     await page.locator(".node-label").getByText("Replay complete", { exact: true }).waitFor({ timeout: 25_000 });
+    const chartAlternatives = await page.evaluate(() => [".edge3-chart", ".score-scale"].map((selector) => {
+      const element = document.querySelector(selector);
+      return { selector, role: element?.getAttribute("role"), label: element?.getAttribute("aria-label") ?? "" };
+    }));
+    ensure(chartAlternatives.every((item) => item.role === "img" && item.label.length > 20), "ColdTrace charts are missing useful text alternatives");
+    manualChecks.push({ check: "ColdTrace chart text alternatives", status: "PASS", evidence: chartAlternatives });
     await audit(page, "phone:coldtrace-s3-ready");
     await page.getByRole("button", { name: "Device", exact: true }).click();
     await audit(page, "phone:coldtrace-device");
@@ -193,6 +214,7 @@ try {
     status: failure ? "FAIL" : "PASS",
     viewports: ["390x844", "1440x1000"],
     states: results,
+    manualChecks,
     failure,
   };
   await writeFile(reportPath, `${JSON.stringify(report, null, 2)}\n`, "utf8");
@@ -203,6 +225,7 @@ try {
     `Status: ${report.status}`,
     `Automated checks: axe-core WCAG 2.1 A/AA and best-practice rules in ${results.length} representative states at ${report.viewports.join(" and ")}.`,
     "Keyboard checks: skip link, modal focus loop, Escape close, and trigger-focus return.",
+    `Manual checks: ${manualChecks.map((item) => `${item.check} ${item.status}`).join("; ") || "incomplete"}.`,
     "",
     "| State | Violations | Pass rules | Manual review needed |",
     "|---|---:|---:|---|",

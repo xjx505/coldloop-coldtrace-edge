@@ -66,7 +66,7 @@ DHT22 is adequate for a prototype but is not industrial cold-chain instrumentati
 ## Existing implementation before overnight Codex run
 
 Repository:
-`<LOCAL_USER_PATH>\Documents\ColdLoop`
+`%USERPROFILE%\Documents\ColdLoop`
 
 Existing firmware:
 - PlatformIO target for ESP32-C3 DevKit-compatible board.

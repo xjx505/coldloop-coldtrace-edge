@@ -52,6 +52,28 @@ describe("EDGE-3 deterministic replay transport", () => {
     expect(packets).toHaveLength(2);
     expect(packets.map((bytes) => decodeEdge3Telemetry(bytes).sensorId)).toEqual([1, 3]);
   });
+
+  it("preserves a missing 10-minute interval in encoded replay uptime", async () => {
+    const gappedTrace: Edge3ReplayTrace = {
+      ...trace,
+      steps: [trace.steps[0], { ...trace.steps[1], timestamp_iso: "2019-01-01T00:20:00Z" }],
+    };
+    const transport = new Edge3ReplayTransport(gappedTrace, 1);
+    const packets: Uint8Array[] = [];
+    transport.setHandlers({ onStatus: vi.fn(), onPacket: (packet) => packets.push(packet as Uint8Array), onError: vi.fn() });
+    await transport.connect();
+    await vi.advanceTimersByTimeAsync(1);
+
+    expect(decodeEdge3Telemetry(packets[3]).uptimeMs).toBe(1_200_000);
+  });
+
+  it("rejects reordered and off-cadence replay chronology instead of normalizing it", () => {
+    const reordered = { ...trace, steps: [...trace.steps].reverse() };
+    const offCadence = {
+      ...trace,
+      steps: [trace.steps[0], { ...trace.steps[1], timestamp_iso: "2019-01-01T00:15:00Z" }],
+    };
+    expect(() => new Edge3ReplayTransport(reordered)).toThrow(/chronological/);
+    expect(() => new Edge3ReplayTransport(offCadence)).toThrow(/multiples/);
+  });
 });
-
-

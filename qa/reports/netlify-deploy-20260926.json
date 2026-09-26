@@ -1,0 +1,16 @@
+{
+  "checkedAt": "2026-09-26T11:18:05.2027407Z",
+  "deploymentId": "6ab7a88e10b8d6bdffd93daa",
+  "productionUrl": "https://coldloop-coldtrace-edge.netlify.app",
+  "showcaseUrl": "https://coldloop-coldtrace-edge.netlify.app/showcase",
+  "rootHttp": 200,
+  "showcaseHttp": 200,
+  "bundleUrl": "/assets/index-iDcnEFLH.js",
+  "bundleSha256": "504BB11392CA0C11E8C35DA578DAFD9B98917F9411176663504EE9351033889E",
+  "bundleMatchesLocal": true,
+  "userPngLogoHttp": 200,
+  "userPngLogoBytes": 1000987,
+  "userPngLogoSha256": "543AF651C1C390D7056FB5B9CDA3A14792DD89142925C07AEA8CC7A8C1C6AFEB",
+  "userPngLogoMatchesExpected": true,
+  "pngFaviconHttp": 200
+}

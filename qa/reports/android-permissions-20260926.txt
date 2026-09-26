@@ -1,4 +1,4 @@
-APK: <LOCAL_USER_PATH>\Documents\ColdLoop\app\android\app\build\outputs\apk\debug\app-debug.apk
+APK: %USERPROFILE%\Documents\ColdLoop\app\android\app\build\outputs\apk\debug\app-debug.apk
 Size: 4412459
 SHA-256: 2E0759260FA5581E703BB70B94FC563B687BB1217769EE9E7AAC9CFFF7CA32BD
 aapt dump permissions:

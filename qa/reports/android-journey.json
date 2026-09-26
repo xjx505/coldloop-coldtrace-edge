@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-09-26T09:41:47.286Z",
+  "generatedAt": "2026-09-26T11:14:02.648Z",
   "serial": "emulator-5554",
   "packageId": "com.coldloop.monitor",
   "apkPath": "app/android/app/build/outputs/apk/debug/app-debug.apk",
-  "status": "FAIL",
+  "status": "PASS",
   "screenshots": [
     "qa/screenshots/android/01-cold-launch.png",
     "qa/screenshots/android/01b-empty-history.png",
@@ -28,7 +28,15 @@
     "qa/screenshots/android/17-settings.png",
     "qa/screenshots/android/18-foreground-resume.png",
     "qa/screenshots/android/19-cold-restart.png",
-    "qa/screenshots/android/20-history-after-restart.png"
+    "qa/screenshots/android/20-history-after-restart.png",
+    "qa/screenshots/android/21-coldtrace-s3-warming.png",
+    "qa/screenshots/android/22-coldtrace-s3-ready-offline.png",
+    "qa/screenshots/android/23-coldtrace-device.png",
+    "qa/screenshots/android/24-coldtrace-cold-relaunch.png",
+    "qa/screenshots/android/25-coldtrace-offline-relaunch-ready.png",
+    "qa/screenshots/android/26-font-scale-130-live.png",
+    "qa/screenshots/android/27-font-scale-130-settings.png",
+    "qa/screenshots/android/28-font-scale-130-settings-scroll.png"
   ],
   "steps": [
     "Screenshot 01-cold-launch: ColdLoop Android surface",
@@ -69,8 +77,28 @@
     "Screenshot 19-cold-restart: ColdLoop Android surface",
     "Temperature threshold persisted across a native app restart",
     "Screenshot 20-history-after-restart: ColdLoop Android surface",
-    "Disabled emulator network before the EDGE-3 local replay"
+    "Disabled emulator network before the EDGE-3 local replay",
+    "Screenshot 21-coldtrace-s3-warming: ColdLoop Android surface",
+    "Screenshot 22-coldtrace-s3-ready-offline: ColdLoop Android surface",
+    "Offline Android replay reached the expected production score and no-alert state",
+    "Screenshot 23-coldtrace-device: ColdLoop Android surface",
+    "Android Back returned from EDGE-3 Device to the forecast screen",
+    "Screenshot 24-coldtrace-cold-relaunch: ColdLoop Android surface",
+    "Screenshot 25-coldtrace-offline-relaunch-ready: ColdLoop Android surface",
+    "Kill/relaunch then repeat offline replay completed deterministically without a stored stale window",
+    "Screenshot 26-font-scale-130-live: ColdLoop Android surface",
+    "Screenshot 27-font-scale-130-settings: ColdLoop Android surface",
+    "Screenshot 28-font-scale-130-settings-scroll: ColdLoop Android surface",
+    "130% Android text scale kept Live and scrollable Settings usable; emulator scale is restored in cleanup"
   ],
   "runtimeExceptions": [],
-  "failure": "Error: No element matched .edge3-source-panel button:last-child\n    at ensure (file:///<LOCAL_USER_PATH>/Documents/ColdLoop/app/scripts/qa-android.mjs:26:25)\n    at click (file:///<LOCAL_USER_PATH>/Documents/ColdLoop/app/scripts/qa-android.mjs:148:3)\n    at async main (file:///<LOCAL_USER_PATH>/Documents/ColdLoop/app/scripts/qa-android.mjs:437:3)\n    at async file:///<LOCAL_USER_PATH>/Documents/ColdLoop/app/scripts/qa-android.mjs:496:12"
+  "networkRequests": [
+    "https://localhost/coldloop-logo.png",
+    "https://localhost/favicon.png"
+  ],
+  "externalRequests": [],
+  "logs": {
+    "file": "qa/screenshots/android/android-runtime-errors.txt",
+    "hasFatalException": false
+  }
 }

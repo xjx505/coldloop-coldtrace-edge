@@ -55,19 +55,19 @@ The model is a **strawberry prototype**. Do not silently generalize it to meat, 
 
 Verified portable bundle stored locally:
 
-`C:\\Users\\xjx50\\Documents\\ColdLoop\\ai_bundle\\coldtrace-android-ai-portable.zip`
+`%USERPROFILE%\\Documents\\ColdLoop\\ai_bundle\\coldtrace-android-ai-portable.zip`
 
 Extracted bundle:
 
-`C:\\Users\\xjx50\\Documents\\ColdLoop\\ai_bundle\\coldtrace-android-ai-portable`
+`%USERPROFILE%\\Documents\\ColdLoop\\ai_bundle\\coldtrace-android-ai-portable`
 
 Guide:
 
-`C:\\Users\\xjx50\\Documents\\ColdLoop\\ai_bundle\\coldtrace-android-ai-portable\\README_INTEGRATION.md`
+`%USERPROFILE%\\Documents\\ColdLoop\\ai_bundle\\coldtrace-android-ai-portable\\README_INTEGRATION.md`
 
 Local artifact map:
 
-`C:\\Users\\xjx50\\Documents\\ColdLoop\\ai_bundle\\LOCAL_BUNDLE_README.md`
+`%USERPROFILE%\\Documents\\ColdLoop\\ai_bundle\\LOCAL_BUNDLE_README.md`
 
 Verified ZIP SHA-256:
 
@@ -240,7 +240,7 @@ Verified local EDGE-3 protocol reference uses:
   - 3 = Rear_Middle
 - temperature validated to DS18B20 range -55..125 °C.
 
-Port the exact validated contract from `C:\\Users\\xjx50\\Documents\\ColdLoop\\ai_bundle\\reference\\EDGE3_PROTOCOL.md` and `EDGE3_TELEMETRY_REFERENCE.js`. Do not invent a new packet layout.
+Port the exact validated contract from `%USERPROFILE%\\Documents\\ColdLoop\\ai_bundle\\reference\\EDGE3_PROTOCOL.md` and `EDGE3_TELEMETRY_REFERENCE.js`. Do not invent a new packet layout.
 
 Do not remove the existing ColdLoop BLE path.
 

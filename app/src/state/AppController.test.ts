@@ -1,8 +1,28 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { AppController } from "./AppController";
+import { EDGE3_CADENCE_MS } from "../ai/aggregation";
+import { PRODUCTION_MODEL_ID } from "../ai/productionModel";
+import { EDGE3_SERVICE_UUID } from "../domain/edge3Protocol";
+
+const ble = vi.hoisted(() => ({
+  initialize: vi.fn(),
+  isEnabled: vi.fn(),
+  requestDevice: vi.fn(),
+  connect: vi.fn(),
+  disconnect: vi.fn(),
+  startNotifications: vi.fn(),
+  stopNotifications: vi.fn(),
+}));
+
+vi.mock("@capacitor-community/bluetooth-le", () => ({ BleClient: ble }));
+vi.mock("@capacitor/core", () => ({ Capacitor: { getPlatform: () => "android" } }));
 
 describe("AppController demo integration", () => {
-  afterEach(() => vi.useRealTimers());
+  afterEach(() => {
+    vi.useRealTimers();
+    vi.unstubAllGlobals();
+    vi.clearAllMocks();
+  });
 
   it("keeps malformed-packet feedback after changing a connected demo scenario", async () => {
     vi.useFakeTimers();
@@ -102,6 +122,55 @@ describe("AppController demo integration", () => {
     expect(state.forecastEvents[0].status).toBe("interrupted");
     expect(state.forecastEvents[0].endedAt).toBeGreaterThanOrEqual(state.forecastEvents[0].startedAt);
     expect(state.sample).toBeNull();
+    await controller.dispose();
+  });
+
+  it("restores a fresh persisted window only after connecting the matching physical EDGE-3 source", async () => {
+    vi.useFakeTimers();
+    const cadence = EDGE3_CADENCE_MS;
+    const now = Math.floor(Date.now() / cadence) * cadence + 30_000;
+    vi.setSystemTime(now);
+    const currentBucket = Math.floor(now / cadence) * cadence;
+    const lastCompletedBucket = currentBucket - cadence;
+    const rows = Array.from({ length: 7 }, (_, index) => ({
+      timestampMs: lastCompletedBucket - (6 - index) * cadence,
+      probes: { Front_Middle: 2.2, Middle_Middle: 2.4, Rear_Middle: 2.6 },
+      sampleCount: 3,
+      validProbeCount: 3,
+      sensorErrorCount: 0,
+      gap: false,
+    }));
+    const storage = new Map<string, string>();
+    vi.stubGlobal("localStorage", {
+      getItem: (key: string) => storage.get(key) ?? null,
+      setItem: (key: string, value: string) => { storage.set(key, value); },
+      removeItem: (key: string) => { storage.delete(key); },
+    });
+    storage.set("coldloop.coldtrace.history.v1", JSON.stringify({
+      sourceIdentity: "edge3-ble:node-01",
+      modelVersion: PRODUCTION_MODEL_ID,
+      lastValidTimestamp: rows[6].timestampMs,
+      rows,
+    }));
+
+    ble.initialize.mockResolvedValue(undefined);
+    ble.isEnabled.mockResolvedValue(true);
+    ble.requestDevice.mockResolvedValue({ deviceId: "node-01", name: "EDGE-3" });
+    ble.disconnect.mockResolvedValue(undefined);
+    ble.connect.mockResolvedValue(undefined);
+    ble.startNotifications.mockResolvedValue(undefined);
+    ble.stopNotifications.mockResolvedValue(undefined);
+
+    const controller = new AppController();
+    await controller.connectEdge3Ble();
+
+    expect(ble.requestDevice).toHaveBeenCalledWith({ services: [EDGE3_SERVICE_UUID] });
+    expect(controller.getSnapshot()).toMatchObject({
+      connection: "connected",
+      sourceSession: { profile: "edge3-15byte", mode: "physical", isSimulated: false },
+      edge3: { forecast: { status: "ready", rows } },
+    });
+    await controller.disconnect();
     await controller.dispose();
   });
 });

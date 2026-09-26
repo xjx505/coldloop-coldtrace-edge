@@ -6,7 +6,7 @@ Prepared 2026-09-26 from the current working tree for an adversarial review.
 
 All 72 non-physical REQUIRED entries in `qa/FINAL_STATUS.json` are recorded PASS with evidence. Physical sensor behavior (B8) and physical phone-to-node BLE (B9) remain `PHYSICAL_REQUIRED`; virtual BLE (F10) remains `OPTIONAL`. Do not treat these as passed by emulator/mock evidence.
 
-Review the entire tree at `<LOCAL_USER_PATH>\Documents\ColdLoop`, including untracked files. The product work is intentionally uncommitted; ordinary `git diff` omits the new React, Android, QA and report files. Baseline HEAD is `e081607504f53e812456c8575939fd4cc7b40ec8`.
+Review the entire tree at `%USERPROFILE%\Documents\ColdLoop`, including untracked files. The product work is intentionally uncommitted; ordinary `git diff` omits the new React, Android, QA and report files. Baseline HEAD is `e081607504f53e812456c8575939fd4cc7b40ec8`.
 
 ## Contract to audit first
 
@@ -40,9 +40,9 @@ For field work and transport wire truth, also read `MORNING_RUNBOOK.md`, `contex
 |---|---|---|
 | `qa/FINAL_STATUS.json` | Gate-by-gate status and evidence pointers | Assertions require audit; they are not themselves product proof |
 | `qa/reports/final-gate-assertion-20260926.log` | 72 PASS, 3 physical/optional exemptions, 0 incomplete | Script checks ledger completeness and nonempty evidence, not gate behavior |
-| `qa/reports/unit-tests-final-20260926.log` | 5 files / 17 Vitest tests PASS, including exact event timing boundary | Unit coverage is not emulator or physical-device use |
-| `qa/reports/firmware-final-build-20260926.log` | Current `hardware` and `wokwi` firmware builds PASS | Compile success is not physical sensor/radio validation |
-| `qa/reports/android-final-build-20260926.log` | Final web build, Capacitor sync and debug APK Gradle build PASS | Pair with APK hash and installed journey below |
+| `qa/reports/unit-tests-final-20260926.txt` | 5 files / 17 Vitest tests PASS, including exact event timing boundary | Unit coverage is not emulator or physical-device use |
+| `qa/reports/firmware-final-build-20260926.txt` | Current `hardware` and `wokwi` firmware builds PASS | Compile success is not physical sensor/radio validation |
+| `qa/reports/android-final-build-20260926.txt` | Final web build, Capacitor sync and debug APK Gradle build PASS | Pair with APK hash and installed journey below |
 | qa/reports/web-journey.json plus qa/screenshots/web/ | 84 frames; 360x800, 390x844, 412x915 and 1440x1000 showcase PASS with no overflow/page/console failures | Latest manifest and current web directory match exactly; 24 superseded/unreferenced images are preserved in qa/screenshots/archive/superseded-web-20260926/; current desktop warning frame: qa/screenshots/web/1440x1000-showcase/03-showcase-warning.png |
 | `qa/reports/android-journey.json` plus `qa/screenshots/android/` | Final APK installed; 24 frames / 38 steps, zero runtime exceptions, no fatal exception | Android 16/API 36 emulator and MockTransport, not a physical phone/node |
 | `qa/screenshots/android/21-font-scale-130-live.png` through `23-font-scale-130-settings-scroll.png` | Native WebView reviewed at Android system font scale 1.3; Live actions stay visible, Settings scrolls, bottom navigation stays fixed | Supplemental manual accessibility evidence; emulator scale restored to 1.0 |

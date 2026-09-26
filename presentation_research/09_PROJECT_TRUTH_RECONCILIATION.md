@@ -8,8 +8,8 @@ They must not be blended into one "working prototype."
 
 ### Branch A — locally verified implementation
 
-**Name used by the software:** ColdLoop  
-**Location:** `<LOCAL_USER_PATH>\Documents\ColdLoop`
+**Name used by the software:** ColdLoop
+**Location:** `%USERPROFILE%\Documents\ColdLoop`
 
 This is the implementation that can currently be inspected, built, tested and evidenced directly on ABED-PC.
 
@@ -38,7 +38,7 @@ The firmware anomaly score is also a heuristic sum based on temperature, MQ-135 
 
 ### Branch B — ColdTrace Edge handoff narrative
 
-**Source:** `<LOCAL_USER_PATH>\Downloads\ColdLoop_ColdTrace_Final_Team_Handoff.md`
+**Source:** `%USERPROFILE%\Downloads\ColdLoop_ColdTrace_Final_Team_Handoff.md`
 
 This describes a materially different system:
 

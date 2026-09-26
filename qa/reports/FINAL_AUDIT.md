@@ -1,46 +1,28 @@
-> Superseded for the public release on 2026-09-26: see PUBLICATION_STATUS_20260926.md and qa/FINAL_STATUS.json for current APK/firmware fingerprints and incomplete gates.
+# Final software acceptance audit — 2026-09-26
 
-# ColdLoop final audit
+Status: all required non-physical gates pass. Physical sensor and phone-to-node BLE checks remain `PHYSICAL_REQUIRED`; see the morning runbook. The QA ledger is `qa/FINAL_STATUS.json`.
 
-Date: 2026-09-26  
-Disposition: software demo and required non-physical gates pass; real sensor behavior and phone-to-node BLE remain morning physical checks.
+## Current release and deployment
 
-## Acceptance status
+- GitHub latest stable demo release: https://github.com/xjx505/coldloop-coldtrace-edge/releases/tag/v1.0.1-demo
+- Installable Android debug APK: https://github.com/xjx505/coldloop-coldtrace-edge/releases/download/v1.0.1-demo/ColdLoop-Android-debug.apk — 6,691,136 bytes, SHA-256 `71113663c66f6fff1f45a7bcaa5b003c4690d4aa26149f6da9591c4cd8a945e0`.
+- Exact supplied PNG logo: `ColdLoop-User-Logo.png`, SHA-256 `543af651c1c390d7056fb5b9cda3a14792dd89142925c07aea8cc7a8c1c6afeb`.
+- Netlify production showcase: https://coldloop-coldtrace-edge.netlify.app/showcase — deploy `6ab7a88e10b8d6bdffd93daa`. Root and `/showcase` returned HTTP 200. The deployed JavaScript bundle matches the locally built bundle, and the deployed source PNG matches the user's supplied file byte for byte; see `qa/reports/netlify-deploy-20260926.json`.
 
-`qa/FINAL_STATUS.json` records PASS with evidence for all 72 non-physical REQUIRED gates. B8 (physical sensor behavior) and B9 (physical phone-to-node BLE) remain `PHYSICAL_REQUIRED`. F10 (virtual BLE) remains `OPTIONAL`. The final ledger assertion is saved in `qa/reports/final-gate-assertion-20260926.log`; that script checks ledger consistency/evidence presence, not product behavior.
+## Software verification
 
-## Current build and regression evidence
+- Unit suite: 13 files, 53 tests passed; `qa/reports/unit-tests-final-20260926.txt`.
+- Android: the exact release APK was installed on API 36 `emulator-5554`; `qa/reports/android-journey.json` is PASS with 32 screenshots, 51 steps, zero WebView exceptions and zero external requests. It covers launch, navigation, Back, warning/recovery/history, device and settings, errors, background/foreground, cold restart, offline S3 replay, persistence, and 130% Android text scale. The harness restores connectivity and text scale after the run.
+- Web/showcase: `qa/reports/web-journey.json` is PASS with 101 journey screenshots at 360x800, 390x844, 412x915 and 1440x1000. All four viewports report no page or console errors or horizontal overflow.
+- Accessibility: `qa/reports/ACCESSIBILITY_AUDIT.md` records 18 states and zero axe violations, keyboard/dialog focus checks, reduced motion, live status announcement and chart alternatives. Three color-contrast nodes across two dialog states are axe-incomplete; checked CSS token/background combinations exceed 5:1 and are documented in the audit.
+- ColdTrace portable parity: `qa/reports/coldtrace-golden-runner-final-20260926.txt` passes 24 production vectors, 24 S2 evaluation vectors and warm-up/gap guards. The packaged model bundle checksum is recorded in `qa/reports/RELEASE_SHA256SUMS_20260926.txt`.
+- Firmware: `qa/reports/firmware-final-build-20260926.txt` records successful `hardware` and `wokwi` builds. Protocol fixture, decoder, BLE transport, reconnection, source isolation and persistence tests are part of the full 53-test suite.
+- Visual review: `qa/reports/VISUAL_AUDIT.md` records connected user journeys, current screenshot manifests, reviewed Android 130% settings, and zero unresolved P0/P1 findings. The attached S3 warming screenshot is `qa/screenshots/web/1440x1000-showcase/10-coldtrace-s3-warming.png`.
 
-- `qa/reports/firmware-final-build-20260926.log`: fresh PlatformIO builds for `hardware` and `wokwi` both succeeded. Hardware uses 1,002,174 bytes flash and 39,036 bytes RAM; Wokwi uses 997,110 bytes flash and 39,036 bytes RAM.
-- `qa/reports/unit-tests-final-20260926.log`: Vitest passed all 5 files / 17 tests, including protocol fixtures, transport cleanup/reconnect, deterministic event recovery and the 1,499/1,500 ms trigger boundary.
-- `qa/reports/android-final-build-20260926.log`: `npm run android:debug` passed with process-scoped Temurin JDK 21 and the user-local Android SDK documented in `MORNING_RUNBOOK.md`. The APK was rebuilt from the final Vite bundle and Capacitor sync. The default shell Java was a runtime-only JRE; no system-wide toolchain setting was changed.
-- `qa/reports/web-journey.json`: 84 screenshots, PASS at 360x800, 390x844, 412x915 and 1440x1000 `/showcase`; zero failures, page errors, console errors or horizontal overflow. The journey verifies normal → rising → warning → one active event → recovery → preserved History after stopping, plus device health, Settings, persistence and connection/sensor failure states.
-- The current web screenshot directory matches the 84-frame manifest exactly. Twenty-four superseded/unreferenced frames were preserved outside it in `qa/screenshots/archive/superseded-web-20260926/`; the older showcase image with repeated Demo labels is explicitly excluded from current evidence. The current desktop warning frame is qa/screenshots/web/1440x1000-showcase/03-showcase-warning.png.
-- `qa/reports/android-journey.json`: current APK installed and exercised on Android 16/API 36 `emulator-5554`; PASS with 24 screenshots, 38 steps, zero WebView exceptions and no fatal AndroidRuntime exception. It includes touch input, primary navigation, metric/event details, threshold warning/recovery, Device/Settings, Back, background/foreground, force-stop/relaunch and persisted Settings/History.
-- `qa/reports/ACCESSIBILITY_AUDIT.md` and `accessibility-20260926.json`: 13 web/showcase states, zero axe violations, skip-link and modal keyboard/focus checks. Three color-contrast nodes are disclosed as axe-incomplete due to overlap; manual CSS-token contrast checks record 5.24:1 or higher. Android text-scale screenshots at 130% are `qa/screenshots/android/21-font-scale-130-live.png` through `23-font-scale-130-settings-scroll.png`; emulator scale was restored to 1.0.
+## Product and scientific boundaries
 
-The unit and web reports were regenerated from the same final source as the APK. The Android report then installed and exercised the rebuilt APK. The corrected active-event display rounds elapsed seconds to nearest second so a triggered 1.5-second event does not display `1s`.
+ColdLoop's original 20-byte little-endian BLE contract and service/characteristic UUIDs are preserved, and firmware retains its serial JSON path. ColdTrace uses a separate EDGE-3 profile and must not infer from ColdLoop packets. S3 replay is deterministic recorded telemetry, not a live hour-long shipment measurement. The model is experimental, based on six-shipment evaluation, without prospective field validation or external/food-safety validation. Its score is not a spoilage probability. MQ-135 is a broad relative signal; ENS160 eCO2 is an estimate. The product does not certify food safety, identify a gas, confirm spoilage, extend expiry or claim measured food-waste reduction.
 
-## Protocol, BLE and scientific truth
+## Physical action still required
 
-`firmware/include/config.h` statically asserts a packed 20-byte `TelemetryPacket`. Firmware and `app/src/transport/BleTransport.ts` use the same service UUID `6d6f0001-7c62-4f44-a4d2-0c5a9b2bca01` and telemetry UUID `6d6f0002-7c62-4f44-a4d2-0c5a9b2bca01`. Golden packet fixtures cover normal, warming, temperature, air/VOC, combined warning, DHT fault, ENS fault and malformed/short packets. Firmware continues to emit human-readable serial JSON.
-
-The APK manifest evidence and separate API 36 permission/scanner exercise are recorded in `qa/reports/android-permissions-20260926.txt`, including denial, Settings recovery, grant, BLE picker and no-device cancellation. This verifies Android permission and scanner-entry behavior on an emulator. Native transport tests cover UUID filtering, one notification subscription, cleanup/reconnect, Bluetooth/permission/connect/timeout/GATT errors. No physical discovery or GATT connection is claimed.
-
-Scientific limits remain explicit: MQ-135 is a broad relative response, ENS160 eCO2 is an estimate rather than a direct CO2 measurement, and the app does not certify food safety, predict spoilage/shelf life, or alter printed expiry.
-
-## Artifact identity
-
-| Artifact | Path | Size | SHA-256 |
-|---|---|---:|---|
-| Android debug APK, `com.coldloop.monitor` v1.0 (code 1) | `app/android/app/build/outputs/apk/debug/app-debug.apk` | 4,313,167 bytes | `F32C81BAEDB531E0879EB2773DFF9AA7FD6BCDDEFEF790F090E0005BCF84F6DB` |
-| ESP32-C3 hardware firmware | `firmware/.pio/build/hardware/firmware.bin` | 1,031,872 bytes | `1DD84BF5D001608CA8E7F97C4D1893D8E6D6EB51D466B7FB78F925C1B47D0378` |
-| Wokwi firmware | `firmware/.pio/build/wokwi/firmware.bin` | 1,026,496 bytes | `387FC9F8E34ECB45E7A6E0FA21994CCB738A7F3D1ADAED1323A11BEA3D47D83E` |
-
-## Physical validation boundary and morning action
-
-`qa/reports/physical-inventory-20260926.txt` records only the Android emulator and no ESP32 USB serial device or physical Android phone. Therefore B8/B9 are not software-testable tonight.
-
-Follow `MORNING_RUNBOOK.md`: verify C3 pin labels; check MQ-135 AOUT divider voltage before GPIO connection; bring DHT22, ENS160 and MQ-135 up individually; confirm finite readings/readiness and serial JSON; flash the hardware target; verify `ColdLoop-01` advertising and changing phone notifications; then perform a safe warm-air warning, History and recovery demonstration. If the hardware or radio is unavailable, present the clearly labelled offline simulation fallback.
-
-No unresolved non-physical gate remains. Do not describe physical BLE or sensor behavior as verified until the physical procedure succeeds.
+No physical Android handset or ESP32-C3 serial board was available during this QA run. In the morning, confirm the exact board pin labels and safe MQ-135 10kΩ/20kΩ divider, bring up sensors one at a time while checking serial JSON/readiness, flash the hardware image, then pair a physical Android phone and verify advancing BLE notifications and the safe excursion → warning → history → recovery flow. No emulator result substitutes for this physical check.
