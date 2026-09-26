@@ -20,7 +20,7 @@ BLE service: 6d6f0001-7c62-4f44-a4d2-0c5a9b2bca01. Telemetry characteristic: 6d6
 
 ## Web demo
 
-From app/, run npm ci and npm run dev. Open the Vite URL for the phone app or add /showcase for the desktop presentation. Settings provides deterministic simulation, history and failure-state controls.
+From app/, run npm ci and npm run dev. Open the Vite URL for the phone app or add /showcase for the desktop presentation. Settings provides deterministic simulation, history and failure-state controls. Live web demo: https://coldloop-coldtrace-edge.netlify.app
 
 ## Android APK
 

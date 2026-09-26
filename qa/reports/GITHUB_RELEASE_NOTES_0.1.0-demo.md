@@ -9,7 +9,7 @@ Installable Android debug APK, ESP32-C3 firmware binaries, portable offline mode
 - `ColdLoop-ESP32-C3-wokwi.bin` — Wokwi simulator build. SHA-256: `387FC9F8E34ECB45E7A6E0FA21994CCB738A7F3D1ADAED1323A11BEA3D47D83E`.
 - `ColdTrace-Edge-portable-model.zip` — model, JavaScript inference, schema, evaluation files and model card. SHA-256: `E63D373D7EED87E4E3C9AA1AD50056DCB77B0D8BA72F5BD3BE2F9DB5A5A68DB4`.
 
-The current web demo and showcase are deployed on Netlify; the project site URL will be added to this release after deployment finishes.
+Live production web demo and showcase: https://coldloop-coldtrace-edge.netlify.app
 
 ## Verification boundary
 
